@@ -18,6 +18,19 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="console.h" />
+    <ClInclude Include="GameLogic.h" />
+    <ClInclude Include="mci.h" />
+    <ClInclude Include="TitleScene.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="console.cpp" />
+    <ClCompile Include="GameLogic.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="mci.cpp" />
+    <ClCompile Include="TitleScene.cpp" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
@@ -126,19 +139,6 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="C:\Users\USER\source\repos\2024_Bombman_21\(24.04.24.)2024_Bombman_21\console.cpp" />
-    <ClCompile Include="C:\Users\USER\source\repos\2024_Bombman_21\(24.04.24.)2024_Bombman_21\mci.cpp" />
-    <ClCompile Include="GameLogic.cpp" />
-    <ClCompile Include="main.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="C:\Users\USER\source\repos\2024_Bombman_21\(24.04.24.)2024_Bombman_21\console.h" />
-    <ClInclude Include="C:\Users\USER\source\repos\2024_Bombman_21\(24.04.24.)2024_Bombman_21\mci.h" />
-    <ClInclude Include="GameLogic.h" />
-    <ClInclude Include="main.h" />
-    <ClInclude Include="TitleScene.h" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
