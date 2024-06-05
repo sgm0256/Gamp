@@ -1,4 +1,6 @@
+#include "TitleScene.h"
 
-int main() {
-
+int main()
+{
+	TitleRenderer();
 }
