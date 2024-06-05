@@ -137,6 +137,7 @@
     <ClInclude Include="C:\Users\USER\source\repos\2024_Bombman_21\(24.04.24.)2024_Bombman_21\mci.h" />
     <ClInclude Include="GameLogic.h" />
     <ClInclude Include="main.h" />
+    <ClInclude Include="TitleScene.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
