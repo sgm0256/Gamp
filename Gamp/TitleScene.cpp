@@ -3,6 +3,7 @@
 #include<io.h>
 #include "TitleScene.h"
 #include "console.h"
+//#include<stdlib.h>
 
 void TitleRenderer()
 {
@@ -34,6 +35,8 @@ bool TitleScene()
 			InfoRenderer();
 			break;
 		case MENU::QUIT:
+			system("cls");
+			exit(0);
 			return false;
 		}
 	}
@@ -84,7 +87,7 @@ MENU MenuRender()
 				return MENU::START;
 			else if (y == originy + 1)
 				return MENU::INFO;
-			else if (y == originy + 1)
+			else if (y == originy + 2)
 				return MENU::QUIT;
 		}
 		break;
@@ -116,7 +119,7 @@ void EnterAnimation()
 	COORD Resolution = GetConsoleResolution();
 	int width = Resolution.X;
 	int height = Resolution.Y;
-	int anitime = 20;
+	int anitime = 10;
 	system("cls");
 
 	SetColor((int)COLOR::BLACK, (int)COLOR::WHITE);
