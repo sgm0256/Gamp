@@ -17,3 +17,141 @@ void TitleRenderer()
 	int curmode = _setmode(_fileno(stdout), prevmode);
 	
 }
+
+bool TitleScene()
+{
+	while (true)
+	{
+		system("cls");
+		TitleRenderer();
+		MENU eMenu = MenuRender();
+		switch (eMenu)
+		{
+		case MENU::START:
+			EnterAnimation();
+			return true;
+		case MENU::INFO:
+			InfoRenderer();
+			break;
+		case MENU::QUIT:
+			return false;
+		}
+	}
+}
+
+MENU MenuRender()
+{
+	COORD Resolution = GetConsoleResolution();
+	int x = Resolution.X / 3;  // 2.5
+	int y = Resolution.Y / 2.5;// 3
+	int originy = y;
+	Gotoxy(x, y);
+	cout << "게임 시작";
+	Gotoxy(x, y + 1);
+	cout << "게임 정보";
+	Gotoxy(x, y + 2);
+	cout << "게임 종료";
+	while (true)
+	{
+		KEY eKey = KeyControllor();
+		switch (eKey)
+		{
+		case KEY::UP:
+			if (originy < y)
+			{
+				Gotoxy(x - 2, y);
+				cout << " ";
+				Gotoxy(x - 2, --y);
+
+
+				cout << ">";
+				Sleep(100);
+			}
+			break;
+		case KEY::DOWN:
+			if (originy + 2 > y)
+			{
+				Gotoxy(x - 2, y);
+				cout << " ";
+				Gotoxy(x - 2, ++y);
+				cout << ">";
+				Sleep(100);
+			}
+			break;
+		case KEY::SPACE:
+		{
+			if (y == originy)
+				return MENU::START;
+			else if (y == originy + 1)
+				return MENU::INFO;
+			else if (y == originy + 1)
+				return MENU::QUIT;
+		}
+		break;
+		}
+	}
+}
+
+KEY KeyControllor()
+{
+	if (GetAsyncKeyState(VK_UP) & 0x8000) // 2
+	{
+		return KEY::UP;
+	}
+	if (GetAsyncKeyState(VK_DOWN) & 0x8000) // 2
+	{
+		return KEY::DOWN;
+	}
+	if (GetAsyncKeyState(VK_SPACE) & 0x8000) // 2
+	{
+		Sleep(50);
+		return KEY::SPACE;
+	}
+	return KEY::FALL;
+}
+
+void EnterAnimation()
+{
+
+	COORD Resolution = GetConsoleResolution();
+	int width = Resolution.X;
+	int height = Resolution.Y;
+	int anitime = 20;
+	system("cls");
+
+	SetColor((int)COLOR::BLACK, (int)COLOR::WHITE);
+	for (int i = 0; i < width / 2; ++i)
+	{
+		for (int j = 0; j < height; j += 2)
+		{
+			Gotoxy(i * 2, j);
+			cout << "  ";
+		}
+		for (int j = 1; j < height; j += 2)
+		{
+			Gotoxy(width - 2 - i * 2, j);
+			cout << "  ";
+		}
+		Sleep(anitime);
+	}
+	SetColor((int)COLOR::WHITE);
+	//SetColor((int)COLOR::WHITE,(int)COLOR::MINT);
+	system("cls");
+}
+
+void InfoRenderer()
+{
+
+	system("cls");
+
+	cout << "대충 설명 들어갈 부분";
+
+	while (true)
+	{
+		if (KeyControllor() == KEY::SPACE)
+		{
+			break;
+		}
+	}
+
+}

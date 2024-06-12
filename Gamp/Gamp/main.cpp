@@ -2,5 +2,15 @@
 
 int main()
 {
-	TitleRenderer();
+
+}
+
+void LSM()
+{
+	TitleScene();
+}
+
+void SGM()
+{
+
 }
