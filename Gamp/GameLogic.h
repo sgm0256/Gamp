@@ -6,8 +6,13 @@ const int MAP_HEIGHT = 20;
 class GameLogic
 {
 private:
-	char arrMap[MAP_HEIGHT][MAP_WIDTH];
+	char arrMap[MAP_HEIGHT][MAP_WIDTH] = {};
 public:
 	void Init();
 	void Render();
+};
+
+enum class MAP_TYPE {
+	Air = '0',
+	Ground
 };
