@@ -23,6 +23,8 @@
     <ClInclude Include="define.h" />
     <ClInclude Include="GameLogic.h" />
     <ClInclude Include="mci.h" />
+    <ClInclude Include="Player.h" />
+    <ClInclude Include="Pos.h" />
     <ClInclude Include="TitleScene.h" />
   </ItemGroup>
   <ItemGroup>
@@ -30,6 +32,7 @@
     <ClCompile Include="GameLogic.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="mci.cpp" />
+    <ClCompile Include="Player.cpp" />
     <ClCompile Include="TitleScene.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

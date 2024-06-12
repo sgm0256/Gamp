@@ -1,4 +1,3 @@
-#include "define.h"
 #include "GameLogic.h"
 
 void GameLogic::Init()
@@ -14,10 +13,10 @@ void GameLogic::Init()
 
 void GameLogic::Render()
 {
+	Gotoxy(0, 0);
+
 	for (int i = 0; i < MAP_HEIGHT; ++i) {
 		for (int j = 0; j < MAP_WIDTH; ++j) {
-			if(i == 0 && j == 0)
-				cout << "¡Ú¥°"
 
 			if (arrMap[i][j] == (char)MAP_TYPE::Air)
 				cout << " ";
@@ -25,5 +24,15 @@ void GameLogic::Render()
 				cout << "£þ";
 		}
 		cout << endl;
+	}
+
+	m_player.Render();
+}
+
+void GameLogic::Update()
+{
+	while (true)
+	{
+		
 	}
 }

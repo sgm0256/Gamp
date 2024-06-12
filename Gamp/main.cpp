@@ -1,9 +1,12 @@
 #include "TitleScene.h"
 #include "GameLogic.h"
 
+void LSM();
+void SGM();
+
 int main()
 {
-	LSM();
+	//LSM();
 	SGM();
 }
 
@@ -17,4 +20,5 @@ void SGM()
 	GameLogic gameLogic = GameLogic();
 	gameLogic.Init();
 	gameLogic.Render();
+
 }
