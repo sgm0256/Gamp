@@ -16,8 +16,8 @@ void GameLogic::Render()
 {
 	for (int i = 0; i < MAP_HEIGHT; ++i) {
 		for (int j = 0; j < MAP_WIDTH; ++j) {
-			if(i == 0 && j == 0)
-				cout << "¡Ú¥°"
+			if (i == 0 && j == 0)
+				cout << "¡Ú¥°";
 
 			if (arrMap[i][j] == (char)MAP_TYPE::Air)
 				cout << " ";

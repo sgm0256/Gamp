@@ -122,20 +122,23 @@ void EnterAnimation()
 	SetColor((int)COLOR::BLACK, (int)COLOR::WHITE);
 	for (int i = 0; i < width / 2; ++i)
 	{
-		for (int j = 0; j < height; j += 2)
+		for (int j = 0; j < height; j += 1)
 		{
 			Gotoxy(i * 2, j);
 			cout << "  ";
 		}
-		for (int j = 1; j < height; j += 2)
+		Sleep(anitime);
+	}
+	SetColor((int)COLOR::WHITE, (int)COLOR::BLACK);
+	for (int i = 0; i < width / 2; ++i)
+	{
+		for (int j = 0; j < height; j += 1)
 		{
-			Gotoxy(width - 2 - i * 2, j);
+			Gotoxy(i * 2, j);
 			cout << "  ";
 		}
 		Sleep(anitime);
 	}
-	SetColor((int)COLOR::WHITE);
-	//SetColor((int)COLOR::WHITE,(int)COLOR::MINT);
 	system("cls");
 }
 

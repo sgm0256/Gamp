@@ -1,15 +1,18 @@
 #include "TitleScene.h"
 #include "GameLogic.h"
 
+void LSM();
+void SGM();
+
 int main()
 {
 	LSM();
-	SGM();
+	//SGM();
 }
 
 void LSM() 
 {
-	TitleRenderer();
+	TitleScene();
 }
 
 void SGM() 
