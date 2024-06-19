@@ -159,5 +159,4 @@ void InfoRenderer()
 			break;
 		}
 	}
-
 }

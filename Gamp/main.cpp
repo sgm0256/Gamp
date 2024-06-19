@@ -6,8 +6,8 @@ void SGM();
 
 int main()
 {
-	LSM();
-	//SGM();
+	//LSM();
+	SGM();
 }
 
 void LSM() 
@@ -17,7 +17,11 @@ void LSM()
 
 void SGM() 
 {
-	GameLogic gameLogic = GameLogic();
-	gameLogic.Init();
-	gameLogic.Render();
+	if (TitleScene())
+	{
+		GameLogic gameLogic = GameLogic();
+		gameLogic.Init();
+		gameLogic.Render();
+		gameLogic.Update();
+	}
 }
