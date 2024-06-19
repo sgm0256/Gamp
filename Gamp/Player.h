@@ -5,7 +5,7 @@ class Player
 {
 public:
 	void Render();
-private:
 	POS pos;
+private:
 };
 
