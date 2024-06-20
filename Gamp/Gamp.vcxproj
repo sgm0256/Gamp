@@ -22,6 +22,7 @@
     <ClInclude Include="console.h" />
     <ClInclude Include="define.h" />
     <ClInclude Include="Enemy.h" />
+    <ClInclude Include="EnemySpawn.h" />
     <ClInclude Include="GameLogic.h" />
     <ClInclude Include="mci.h" />
     <ClInclude Include="Player.h" />
@@ -31,8 +32,12 @@
   <ItemGroup>
     <ClCompile Include="console.cpp" />
     <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="EnemySpawn.cpp" />
     <ClCompile Include="GameLogic.cpp" />
-    <ClCompile Include="main.cpp" />
+    <ClCompile Include="LSMMain.cpp" />
+    <ClCompile Include="main.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="mci.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="TitleScene.cpp" />
@@ -123,6 +128,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>

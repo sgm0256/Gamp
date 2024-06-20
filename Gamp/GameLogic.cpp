@@ -31,6 +31,7 @@ void GameLogic::Render()
 	}
 
 	m_player.Render();
+	//enmeySpawn.eneymContainerList
 }
 
 void GameLogic::Update()
