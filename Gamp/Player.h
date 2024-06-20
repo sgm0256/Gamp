@@ -6,6 +6,10 @@ class Player
 public:
 	void Render();
 	void Input();
-	POS pos;
+	void GroundCheck();
+	POS pos = { 0,0 };
+	float OnGroundStartTime = 0;
+private:
+	float OnGroundTime = 0;
 };
 

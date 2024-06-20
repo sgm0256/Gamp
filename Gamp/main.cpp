@@ -19,9 +19,8 @@ void SGM()
 {
 	if (TitleScene())
 	{
-		GameLogic gameLogic = GameLogic();
+		GameLogic gameLogic;
 		gameLogic.Init();
-		gameLogic.Render();
 		gameLogic.Update();
 	}
 }

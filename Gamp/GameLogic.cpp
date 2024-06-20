@@ -12,6 +12,7 @@ void GameLogic::Init()
 				arrMap[i][j] = '0';
 		}
 	}
+	m_player.OnGroundStartTime = clock();
 
 	SetCursorVis(false, 1);
 }
