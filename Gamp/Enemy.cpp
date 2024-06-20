@@ -1,7 +1,7 @@
 #include "Enemy.h"
 #include "console.h"
 
-void Enemy::EneyemyRnderer(Player player,POS pos)
+void Enemy::EnemyRnderer(Player player,POS pos)
 {
 	float xPos = player.pos.x - pos.x;
 	float yPos = player.pos.y - pos.y;

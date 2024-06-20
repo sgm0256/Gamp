@@ -1,5 +1,6 @@
 #pragma once
 #include "Player.h"
+#include "EnemySpawn.h"
 #include "console.h"
 
 const int MAP_WIDTH = 41;
@@ -9,6 +10,8 @@ class GameLogic
 {
 private:
 	Player m_player;
+	EnemySpawn enmeySpawn;
+
 public:
 	char arrMap[MAP_HEIGHT][MAP_WIDTH];
 	void Init();
