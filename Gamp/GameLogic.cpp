@@ -7,12 +7,14 @@ void GameLogic::Init()
 		for (int j = 0; j < MAP_WIDTH; ++j) {
 			//0Àº ºó°ø°£, 1Àº ¶¥
 			if (i % 2 == 1)
-				arrMap[i][j] = '1';
+				m_ground.arrMap[i][j] = '1';
 			else
-				arrMap[i][j] = '0';
+				m_ground.arrMap[i][j] = '0';
 		}
 	}
 	m_player.OnGroundStartTime = clock();
+
+	m_player.SetGround(m_ground);
 
 	SetCursorVis(false, 1);
 }
@@ -23,9 +25,9 @@ void GameLogic::Render()
 
 	for (int i = 0; i < MAP_HEIGHT; ++i) {
 		for (int j = 0; j < MAP_WIDTH; ++j) {
-			if (arrMap[i][j] == (char)MAP_TYPE::Air)
+			if (m_ground.arrMap[i][j] == (char)MAP_TYPE::Air)
 				cout << "  ";
-			else if (arrMap[i][j] == (char)MAP_TYPE::Ground)
+			else if (m_ground.arrMap[i][j] == (char)MAP_TYPE::Ground)
 				cout << "£þ";
 		}
 		cout << endl;
@@ -40,6 +42,7 @@ void GameLogic::Update()
 	{
 		Render();
 		m_player.Input();
-		m_player.GroundCheck(arrMap);
+		m_player.GroundCheck(m_ground.arrMap);
+		m_ground.UpdateGround();
 	}
 }

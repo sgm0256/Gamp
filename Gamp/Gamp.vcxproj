@@ -25,10 +25,10 @@
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="EnemySpawn.h" />
     <ClInclude Include="GameLogic.h" />
+    <ClInclude Include="Ground.h" />
     <ClInclude Include="mci.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Pos.h" />
-    <ClInclude Include="Timer.h" />
     <ClInclude Include="TitleScene.h" />
   </ItemGroup>
   <ItemGroup>
@@ -37,6 +37,7 @@
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="EnemySpawn.cpp" />
     <ClCompile Include="GameLogic.cpp" />
+    <ClCompile Include="Ground.cpp" />
     <ClCompile Include="LSMMain.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClCompile>
@@ -45,7 +46,6 @@
     </ClCompile>
     <ClCompile Include="mci.cpp" />
     <ClCompile Include="Player.cpp" />
-    <ClCompile Include="Timer.cpp" />
     <ClCompile Include="TitleScene.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
