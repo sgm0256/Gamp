@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Bomb.h" />
     <ClInclude Include="console.h" />
     <ClInclude Include="define.h" />
     <ClInclude Include="Enemy.h" />
@@ -27,19 +28,24 @@
     <ClInclude Include="mci.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Pos.h" />
+    <ClInclude Include="Timer.h" />
     <ClInclude Include="TitleScene.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Bomb.cpp" />
     <ClCompile Include="console.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="EnemySpawn.cpp" />
     <ClCompile Include="GameLogic.cpp" />
-    <ClCompile Include="LSMMain.cpp" />
-    <ClCompile Include="main.cpp">
+    <ClCompile Include="LSMMain.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="mci.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Timer.cpp" />
     <ClCompile Include="TitleScene.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

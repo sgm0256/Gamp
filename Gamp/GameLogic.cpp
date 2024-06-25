@@ -32,14 +32,14 @@ void GameLogic::Render()
 	}
 
 	m_player.Render();
-	//enmeySpawn.eneymContainerList
 }
 
 void GameLogic::Update()
 {
 	while (true)
 	{
-		m_player.Input();
 		Render();
+		m_player.Input();
+		m_player.GroundCheck(arrMap);
 	}
 }

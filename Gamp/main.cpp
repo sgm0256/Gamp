@@ -10,12 +10,12 @@ int main()
 	SGM();
 }
 
-void LSM() 
+void LSM()
 {
 	TitleScene();
 }
 
-void SGM() 
+void SGM()
 {
 	if (TitleScene())
 	{

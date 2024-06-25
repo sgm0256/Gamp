@@ -2,9 +2,7 @@
 #include "Player.h"
 #include "EnemySpawn.h"
 #include "console.h"
-
-const int MAP_WIDTH = 41;
-const int MAP_HEIGHT = 20;
+#include "define.h"
 
 class GameLogic
 {
@@ -12,11 +10,11 @@ private:
 	Player m_player;
 	EnemySpawn enmeySpawn;
 
-public:
 	char arrMap[MAP_HEIGHT][MAP_WIDTH];
+public:
 	void Init();
-	void Render();
 	void Update();
+	void Render();
 };
 
 enum class MAP_TYPE {
