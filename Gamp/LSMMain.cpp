@@ -13,7 +13,6 @@ void LSM()
 
 		if (GetAsyncKeyState(VK_LSHIFT) & 0x8000)
 		{
-			gameLogic.Test();
 			cout << "1";
 		}
 	}
