@@ -13,7 +13,9 @@ class Ground
 {
 public:
 	void UpdateGround();
+	void GroundCheck();
 public:
 	std::vector<GROUND> vecGround;
 	char arrMap[MAP_HEIGHT][MAP_WIDTH];
+	float OnGroundStartTime;
 };

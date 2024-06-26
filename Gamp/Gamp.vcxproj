@@ -27,6 +27,7 @@
     <ClInclude Include="GameLogic.h" />
     <ClInclude Include="Ground.h" />
     <ClInclude Include="mci.h" />
+    <ClInclude Include="Object.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Pos.h" />
     <ClInclude Include="TitleScene.h" />
@@ -47,6 +48,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="mci.cpp" />
+    <ClCompile Include="Object.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="TitleScene.cpp" />
   </ItemGroup>

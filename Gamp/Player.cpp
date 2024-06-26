@@ -1,11 +1,6 @@
 #include<algorithm>
 #include "Player.h"
 
-void Player::SetGround(Ground& ground)
-{
-	pGround = &ground;
-}
-
 void Player::Render()
 {
 	Gotoxy(pos.x, pos.y);
@@ -25,9 +20,6 @@ void Player::Input()
 	if (GetAsyncKeyState(VK_RIGHT) & 0x8000)
 		inputPos.x += 2;
 
-	if (inputPos.y != 0 || inputPos.x != 0)
-		OnGroundStartTime = clock();
-
 	Move(inputPos);
 	Sleep(100);
 }
@@ -38,30 +30,4 @@ void Player::Move(POS _pos)
 
 	pos.x = std::clamp(pos.x, 0, (MAP_WIDTH - 1) * 2);
 	pos.y = std::clamp(pos.y, 0, MAP_HEIGHT - 2);
-}
-
-void Player::GroundCheck(char arrMap[MAP_HEIGHT][MAP_WIDTH])
-{
-	POS playerStepPos = { pos.x / 2, pos.y + 1 };
-
-	float OnGroundEndTime = clock();
-	Gotoxy(0, MAP_HEIGHT);
-	cout << (OnGroundEndTime - OnGroundStartTime) / CLOCKS_PER_SEC;
-
-	if ((OnGroundEndTime - OnGroundStartTime) / CLOCKS_PER_SEC > 0.5f)
-	{
-		if (playerStepPos.y < MAP_HEIGHT && playerStepPos.x < MAP_WIDTH)
-		{
-			arrMap[playerStepPos.y][playerStepPos.x] = '0';
-			pGround->vecGround.push_back({
-				50,
-				playerStepPos
-				});
-			OnGroundStartTime = clock();
-		}
-	}
-
-	if (arrMap[pos.y + 1][pos.x / 2] == '0') {
-		Move({ 0, 2 });
-	}
 }
