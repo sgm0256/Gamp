@@ -1,11 +1,14 @@
 #pragma once
-class Bomb
+#include <vector>
+#include "Object.h"
+
+class Bomb : public Object
 {
 public:
-	Bomb();
+	virtual void ObjectUpdate();
+
+	std::vector<OBJECT> vecBomb;
 private:
-	void Explode();
-
 	float startBombTime;
+	int bombSize = 2;
 };
-

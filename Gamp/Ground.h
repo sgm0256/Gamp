@@ -1,22 +1,16 @@
 #pragma once
 #include <vector>
-#include "Pos.h"
+#include "Object.h"
 #include "define.h"
 
-typedef struct ground 
-{
-	int life;
-	POS pos;
-}GROUND;
-
-class Ground
+class Ground : public Object
 {
 public:
-	void Update();
-	void UpdateGround();
+	virtual void ObjectUpdate();
 	void GroundCheck();
 public:
-	std::vector<GROUND> vecGround;
 	char arrMap[MAP_HEIGHT][MAP_WIDTH];
 	float OnGroundStartTime;
+private:
+	std::vector<OBJECT> vecGround;
 };

@@ -1,5 +1,5 @@
 #include "GameLogic.h"
-#include "Object.h"
+#include "ObjectManager.h"
 
 
 void GameLogic::Init()
@@ -9,12 +9,12 @@ void GameLogic::Init()
 		for (int j = 0; j < MAP_WIDTH; ++j) {
 			//0Àº ºó°ø°£, 1Àº ¶¥
 			if (i % 2 == 1)
-				Object::GetInst()->m_ground.arrMap[i][j] = '1';
+				ObjectManager::GetInst()->m_ground.arrMap[i][j] = (char)OBJ_TYPE::Ground;
 			else
-				Object::GetInst()->m_ground.arrMap[i][j] = '0';
+				ObjectManager::GetInst()->m_ground.arrMap[i][j] = (char)OBJ_TYPE::Air;
 		}
 	}
-	Object::GetInst()->m_ground.OnGroundStartTime = clock();
+	ObjectManager::GetInst()->m_ground.OnGroundStartTime = clock();
 
 	SetCursorVis(false, 1);
 }
@@ -25,12 +25,16 @@ void GameLogic::Render()
 
 	for (int i = 0; i < MAP_HEIGHT; ++i) {
 		for (int j = 0; j < MAP_WIDTH; ++j) {
-			if (i == Object::GetInst()->m_player.pos.y && j == Object::GetInst()->m_player.pos.x / 2)
-				Object::GetInst()->m_player.Render();
-			else if (Object::GetInst()->m_ground.arrMap[i][j] == (char)MAP_TYPE::Air)
+			if (i == ObjectManager::GetInst()->m_player.pos.y && j == ObjectManager::GetInst()->m_player.pos.x / 2)
+				ObjectManager::GetInst()->m_player.Render();
+			else if (ObjectManager::GetInst()->m_ground.arrMap[i][j] == (char)OBJ_TYPE::Air)
 				cout << "  ";
-			else if (Object::GetInst()->m_ground.arrMap[i][j] == (char)MAP_TYPE::Ground)
+			else if (ObjectManager::GetInst()->m_ground.arrMap[i][j] == (char)OBJ_TYPE::Ground)
 				cout << "£þ";
+			else if (ObjectManager::GetInst()->m_ground.arrMap[i][j] == (char)OBJ_TYPE::Bomb)
+				cout << "¡Ý";
+			else if (ObjectManager::GetInst()->m_ground.arrMap[i][j] == (char)OBJ_TYPE::Flash_Bomb)
+				cout << "¢Á";
 		}
 		cout << endl;
 	}
@@ -41,7 +45,9 @@ void GameLogic::Update()
 	while (true)
 	{
 		Render();
-		Object::GetInst()->m_player.Input();
-		Object::GetInst()->m_ground.Update();
+		ObjectManager::GetInst()->m_player.Input();
+		ObjectManager::GetInst()->m_ground.GroundCheck();
+		ObjectManager::GetInst()->m_ground.ObjectUpdate();
+		ObjectManager::GetInst()->m_bomb.ObjectUpdate();
 	}
 }

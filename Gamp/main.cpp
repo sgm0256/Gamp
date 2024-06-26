@@ -1,6 +1,6 @@
 #include "TitleScene.h"
 #include "GameLogic.h"
-#include "Object.h"
+#include "ObjectManager.h"
 
 void LSM();
 void SGM();
@@ -24,5 +24,5 @@ void SGM()
 		gameLogic.Init();
 		gameLogic.Update();
 	}
-	Object::DestroyInst();
+	ObjectManager::DestroyInst();
 }

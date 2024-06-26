@@ -1,18 +1,13 @@
-#include "Object.h"
+#include "ObjectManager.h"
+#include "Ground.h"
 
-void Ground::Update()
-{
-	GroundCheck();
-	UpdateGround();
-}
-
-void Ground::UpdateGround()
+void  Ground::ObjectUpdate()
 {
 	for (int i = 0; i < vecGround.size(); ++i)
 	{
 		vecGround[i].life--;
 		if (vecGround[i].life == 0) {
-			arrMap[vecGround[i].pos.y][vecGround[i].pos.x] = '1';
+			arrMap[vecGround[i].pos.y][vecGround[i].pos.x] = (char)OBJ_TYPE::Ground;
 			vecGround.erase(vecGround.begin() + i);
 		}
 	}
@@ -20,7 +15,7 @@ void Ground::UpdateGround()
 
 void Ground::GroundCheck()
 {
-	POS playerStepPos = { Object::GetInst()->m_player.pos.x / 2, Object::GetInst()->m_player.pos.y + 1};
+	POS playerStepPos = { ObjectManager::GetInst()->m_player.pos.x / 2, ObjectManager::GetInst()->m_player.pos.y + 1};
 
 	float OnGroundEndTime = clock();
 
@@ -32,7 +27,7 @@ void Ground::GroundCheck()
 	{
 		if (playerStepPos.y < MAP_HEIGHT && playerStepPos.x < MAP_WIDTH)
 		{
-			arrMap[playerStepPos.y][playerStepPos.x] = '0';
+			arrMap[playerStepPos.y][playerStepPos.x] = (char)OBJ_TYPE::Air;
 			vecGround.push_back({
 				50,
 				playerStepPos

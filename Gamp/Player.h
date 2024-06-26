@@ -1,7 +1,6 @@
 #pragma once
 #include "Pos.h"
 #include "define.h"
-#include "Ground.h"
 
 class Player
 {
@@ -10,6 +9,9 @@ private:
 public:
 	void Render();
 	void Input();
+private:
+	void MoveInput();
+	void BombInput();
 public:
 	POS pos = { 0,0 };
 private:
