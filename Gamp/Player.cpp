@@ -10,8 +10,8 @@ void Player::Render()
 
 void Player::Input()
 {
-	if (arrMap[pos.y + 1][pos.x] == '0')
-		pos.y += 2;
+	//if (arrMap[pos.y + 1][pos.x] == '0')
+	//	pos.y += 2;
 
 	if (GetAsyncKeyState(VK_UP) & 0x8000)
 		pos.y -= 2;
@@ -32,6 +32,6 @@ void Player::GroundCheck()
 	float OnGroundEndTime = clock();
 	if ((OnGroundStartTime - OnGroundEndTime) > 1)
 	{
-		arrMap[pos.y + 1][pos.x] = '0';
+		//arrMap[pos.y + 1][pos.x] = '0';
 	}
 }

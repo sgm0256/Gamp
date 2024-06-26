@@ -6,10 +6,11 @@ void EnemySpawn::SpawnEnemy()
 {
 	{
 		srand((unsigned int)time(NULL));
-		//float xPos = rand() % 50 >=50 ?  MAP_WIDTH;
-		//float yPos = rand() % MAP_HEIGHT;
-		//POS pos = 
-		//Enemy enemy;
-		//eneymContainerList.push_back(enemy);
+		int xPos = rand() % 50 >=50 ?  0: MAP_WIDTH;
+		int yPos = rand() % 50 >= 50 ? 0:MAP_HEIGHT;
+		POS spawnPos = { xPos,yPos };
+		Enemy enemy;
+		enemy.pos = spawnPos;
+		eneymContainerList.push_back(enemy);
 	}
 }
