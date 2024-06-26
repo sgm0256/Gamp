@@ -1,6 +1,10 @@
 #include<algorithm>
 #include "Player.h"
-#include "GameLogic.h"
+
+void Player::SetGround(Ground& ground)
+{
+	pGround = &ground;
+}
 
 void Player::Render()
 {
@@ -10,28 +14,54 @@ void Player::Render()
 
 void Player::Input()
 {
-	//if (arrMap[pos.y + 1][pos.x] == '0')
-	//	pos.y += 2;
+	POS inputPos = { 0,0 };
 
 	if (GetAsyncKeyState(VK_UP) & 0x8000)
-		pos.y -= 2;
+		inputPos.y -= 2;
 	if (GetAsyncKeyState(VK_DOWN) & 0x8000)
-		pos.y += 2;
+		inputPos.y += 2;
 	if (GetAsyncKeyState(VK_LEFT) & 0x8000)
-		pos.x -= 2;
+		inputPos.x -= 2;
 	if (GetAsyncKeyState(VK_RIGHT) & 0x8000)
-		pos.x += 2;
+		inputPos.x += 2;
 
-	pos.x = std::clamp(pos.x, 0, MAP_WIDTH * 2);
-	pos.y = std::clamp(pos.y, 0, MAP_HEIGHT - 1);
+	if (inputPos.y != 0 || inputPos.x != 0)
+		OnGroundStartTime = clock();
+
+	Move(inputPos);
 	Sleep(100);
 }
 
-void Player::GroundCheck()
+void Player::Move(POS _pos)
 {
+	pos += _pos;
+
+	pos.x = std::clamp(pos.x, 0, (MAP_WIDTH - 1) * 2);
+	pos.y = std::clamp(pos.y, 0, MAP_HEIGHT - 2);
+}
+
+void Player::GroundCheck(char arrMap[MAP_HEIGHT][MAP_WIDTH])
+{
+	POS playerStepPos = { pos.x / 2, pos.y + 1 };
+
 	float OnGroundEndTime = clock();
-	if ((OnGroundStartTime - OnGroundEndTime) > 1)
+	Gotoxy(0, MAP_HEIGHT);
+	cout << (OnGroundEndTime - OnGroundStartTime) / CLOCKS_PER_SEC;
+
+	if ((OnGroundEndTime - OnGroundStartTime) / CLOCKS_PER_SEC > 0.5f)
 	{
-		//arrMap[pos.y + 1][pos.x] = '0';
+		if (playerStepPos.y < MAP_HEIGHT && playerStepPos.x < MAP_WIDTH)
+		{
+			arrMap[playerStepPos.y][playerStepPos.x] = '0';
+			pGround->vecGround.push_back({
+				50,
+				playerStepPos
+				});
+			OnGroundStartTime = clock();
+		}
+	}
+
+	if (arrMap[pos.y + 1][pos.x / 2] == '0') {
+		Move({ 0, 2 });
 	}
 }
