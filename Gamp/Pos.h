@@ -8,7 +8,7 @@ typedef struct pos
 	pos& operator+=(const pos& other) 
 	{
 		x += other.x;
-		y += other.y;
+		y += other.y; 
 		return *this;
 	}
 }POS;

@@ -34,6 +34,19 @@ void GameLogic::Render()
 		}
 		cout << endl;
 	}
+	Object::GetInst()->enmeySpawn.EnemysRender(Object::GetInst()->m_player);
+}
+
+void GameLogic::EnemySpawn()
+{
+	if (GetAsyncKeyState(VK_LCONTROL) & 0x8000)
+	{
+		Object::GetInst()->enmeySpawn.SpawnEnemy();
+		//Gotoxy(50 + Object::GetInst()->enmeySpawn.eneymContainerList.size(), 25);
+		//cout << 1;
+
+	}
+
 }
 
 void GameLogic::Update()
@@ -43,5 +56,6 @@ void GameLogic::Update()
 		Render();
 		Object::GetInst()->m_player.Input();
 		Object::GetInst()->m_ground.Update();
+		EnemySpawn();
 	}
 }

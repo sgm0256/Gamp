@@ -4,6 +4,8 @@
 class Enemy
 {
 public:
+	Enemy() = default;
+	Enemy(POS pos);
 	void EnemyRnderer(Player player);
 	POS pos;
 private:
