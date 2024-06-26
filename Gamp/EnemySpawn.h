@@ -13,7 +13,7 @@ public:
 	{
 		for (auto e : eneymContainerList)
 		{
-			e.EnemyRnderer(player,e.pos);
+			e.EnemyRnderer(player);
 		}
 	}
 

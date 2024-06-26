@@ -1,4 +1,5 @@
 #include "GameLogic.h"
+#include "EnemySpawn.h"
 
 void GameLogic::Init()
 {
@@ -34,13 +35,24 @@ void GameLogic::Render()
 	}
 
 	m_player.Render();
+	enemySpawn.EnemysRender(m_player);
 }
+
+void GameLogic::EnemySpawn()
+{
+	if (GetAsyncKeyState(VK_LSHIFT) & 0x8000)
+	{
+		enemySpawn.SpawnEnemy();
+	}
+}
+
 
 void GameLogic::Update()
 {
 	while (true)
 	{
 		Render();
+		EnemySpawn();
 		m_player.Input();
 		m_player.GroundCheck(m_ground.arrMap);
 		m_ground.UpdateGround();

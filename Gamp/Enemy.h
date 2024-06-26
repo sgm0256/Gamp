@@ -4,7 +4,7 @@
 class Enemy
 {
 public:
-	void EnemyRnderer(Player player,POS pos);
+	void EnemyRnderer(Player player);
 	POS pos;
 private:
 };

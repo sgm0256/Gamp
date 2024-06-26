@@ -10,12 +10,13 @@ class GameLogic
 private:
 	Ground m_ground;
 	Player m_player;
-	EnemySpawn enmeySpawn;
+	EnemySpawn enemySpawn;
 
 public:
 	void Init();
 	void Update();
 	void Render();
+	void EnemySpawn();
 };
 
 enum class MAP_TYPE {
