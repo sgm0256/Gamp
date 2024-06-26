@@ -12,6 +12,7 @@ typedef struct ground
 class Ground
 {
 public:
+	void Update();
 	void UpdateGround();
 	void GroundCheck();
 public:

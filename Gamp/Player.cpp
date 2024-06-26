@@ -1,5 +1,6 @@
 #include<algorithm>
 #include "Player.h"
+#include "Object.h"
 
 void Player::Render()
 {
@@ -20,6 +21,11 @@ void Player::Input()
 	if (GetAsyncKeyState(VK_RIGHT) & 0x8000)
 		inputPos.x += 2;
 
+	if (inputPos.x != 0 || inputPos.y != 0)
+	{
+		Object::GetInst()->m_ground.OnGroundStartTime = clock();
+	}
+
 	Move(inputPos);
 	Sleep(100);
 }
@@ -30,4 +36,7 @@ void Player::Move(POS _pos)
 
 	pos.x = std::clamp(pos.x, 0, (MAP_WIDTH - 1) * 2);
 	pos.y = std::clamp(pos.y, 0, MAP_HEIGHT - 2);
+
+	if (Object::GetInst()->m_ground.arrMap[pos.y + 1][pos.x/2] == '0')
+		pos += {0, 2};
 }
