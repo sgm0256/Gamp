@@ -38,6 +38,14 @@ void GameLogic::Render()
 		}
 		cout << endl;
 	}
+
+	ObjectManager::GetInst()->m_enemy.EnemyRnderer();
+}
+
+void GameLogic::EnemySpawn()
+{
+	if(GetAsyncKeyState(VK_LCONTROL) & 0x8000)
+		ObjectManager::GetInst()->enmeySpawn.SpawnEnemy();
 }
 
 void GameLogic::Update()
@@ -49,5 +57,6 @@ void GameLogic::Update()
 		ObjectManager::GetInst()->m_ground.GroundCheck();
 		ObjectManager::GetInst()->m_ground.ObjectUpdate();
 		ObjectManager::GetInst()->m_bomb.ObjectUpdate();
+		EnemySpawn();
 	}
 }

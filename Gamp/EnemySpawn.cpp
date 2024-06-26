@@ -1,6 +1,7 @@
+#include <ctime>
 #include "EnemySpawn.h"
 #include "GameLogic.h"
-#include <ctime>
+#include "ObjectManager.h"
 
 void EnemySpawn::SpawnEnemy()
 {
@@ -9,6 +10,6 @@ void EnemySpawn::SpawnEnemy()
 	int yPos = rand() % 101 >= 50 ? 0 : MAP_HEIGHT;
 	//POS spawnPos = { xPos,yPos };
 	POS spawnPos = { MAP_WIDTH,MAP_HEIGHT/2 };
-	Enemy enemy(spawnPos);
-	eneymContainerList.push_back(enemy);
+	ObjectManager::GetInst()->
+		m_enemy.vecEnemy.push_back({spawnPos.x, spawnPos.y});
 }
