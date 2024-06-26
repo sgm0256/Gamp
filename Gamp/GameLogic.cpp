@@ -36,6 +36,12 @@ void GameLogic::Render()
 	}
 }
 
+void GameLogic::EnemySpawn()
+{
+	if (GetAsyncKeyState(VK_LSHIFT) & 0x8000)
+		Object::GetInst()->enmeySpawn.SpawnEnemy();
+}
+
 void GameLogic::Update()
 {
 	while (true)
@@ -44,5 +50,7 @@ void GameLogic::Update()
 		Object::GetInst()->m_player.Input();
 		Object::GetInst()->m_ground.GroundCheck();
 		Object::GetInst()->m_ground.UpdateGround();
+		EnemySpawn();
+		Object::GetInst()->enmeySpawn.EnemysRender(Object::GetInst()->m_player);
 	}
 }

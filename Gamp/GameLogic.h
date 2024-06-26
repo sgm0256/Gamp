@@ -8,6 +8,7 @@ public:
 	void Init();
 	void Update();
 	void Render();
+	void EnemySpawn();
 };
 
 enum class MAP_TYPE {
