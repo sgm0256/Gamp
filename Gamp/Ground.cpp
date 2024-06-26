@@ -1,5 +1,10 @@
-#include "Ground.h"
 #include "Object.h"
+
+void Ground::Update()
+{
+	GroundCheck();
+	UpdateGround();
+}
 
 void Ground::UpdateGround()
 {

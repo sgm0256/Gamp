@@ -42,7 +42,6 @@ void GameLogic::Update()
 	{
 		Render();
 		Object::GetInst()->m_player.Input();
-		Object::GetInst()->m_ground.GroundCheck();
-		Object::GetInst()->m_ground.UpdateGround();
+		Object::GetInst()->m_ground.Update();
 	}
 }
