@@ -25,7 +25,7 @@ void GameLogic::Render()
 
 	for (int i = 0; i < MAP_HEIGHT; ++i) {
 		for (int j = 0; j < MAP_WIDTH; ++j) {
-			if (i == ObjectManager::GetInst()->m_player.pos.y && j == ObjectManager::GetInst()->m_player.pos.x / 2)
+			if (i == ObjectManager::GetInst()->m_player.pos.y && j == ObjectManager::GetInst()->m_player.pos.x/2)
 				ObjectManager::GetInst()->m_player.Render();
 			else if (ObjectManager::GetInst()->m_ground.arrMap[i][j] == (char)OBJ_TYPE::Air)
 				cout << "  ";
@@ -38,6 +38,14 @@ void GameLogic::Render()
 		}
 		cout << endl;
 	}
+
+	ObjectManager::GetInst()->enmeySpawn.EnemysRender(ObjectManager::GetInst()->m_player);
+}
+
+void GameLogic::EnemySpawn()
+{
+	if (GetAsyncKeyState(VK_LCONTROL) & 0x8000)
+		ObjectManager::GetInst()->enmeySpawn.SpawnEnemy();
 }
 
 void GameLogic::Update()
@@ -46,8 +54,8 @@ void GameLogic::Update()
 	{
 		Render();
 		ObjectManager::GetInst()->m_player.Input();
-		ObjectManager::GetInst()->m_ground.GroundCheck();
-		ObjectManager::GetInst()->m_ground.ObjectUpdate();
+		//ObjectManager::GetInst()->m_ground.Update();
 		ObjectManager::GetInst()->m_bomb.ObjectUpdate();
+		EnemySpawn();
 	}
 }

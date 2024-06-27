@@ -1,6 +1,12 @@
 #include "ObjectManager.h"
 #include "Ground.h"
 
+void Ground::Update()
+{
+	ObjectUpdate();
+	GroundCheck();
+}
+
 void  Ground::ObjectUpdate()
 {
 	for (int i = 0; i < vecGround.size(); ++i)
@@ -20,8 +26,8 @@ void Ground::GroundCheck()
 	float OnGroundEndTime = clock();
 
 	//debug
-	Gotoxy(0, MAP_HEIGHT);
-	cout << (OnGroundEndTime - OnGroundStartTime) / CLOCKS_PER_SEC;
+	/*Gotoxy(0, MAP_HEIGHT);
+	cout << (OnGroundEndTime - OnGroundStartTime) / CLOCKS_PER_SEC;*/
 
 	if ((OnGroundEndTime - OnGroundStartTime) / CLOCKS_PER_SEC > 0.5f)
 	{

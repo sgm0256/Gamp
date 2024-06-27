@@ -16,9 +16,5 @@ public:
 			e.EnemyRnderer(player);
 		}
 	}
-
-	
-
-
 };
 

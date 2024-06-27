@@ -14,13 +14,17 @@ void Bomb::ObjectUpdate()
 			(char)OBJ_TYPE::Bomb : (char)OBJ_TYPE::Flash_Bomb;
 		if (vecBomb[i].life == 0)
 		{
-			/*for (int j = vecBomb[i].pos.y - bombSize; j <= vecBomb[i].pos.y + bombSize; ++j)
+			for (int j = vecBomb[i].pos.y - bombSize; j <= vecBomb[i].pos.y + bombSize; ++j)
 			{
-				for (int k = vecBomb[i].pos.x - bombSize; k <= vecBomb[k].pos.x + bombSize; ++k)
+				for (int k = vecBomb[i].pos.x - bombSize; k <= vecBomb[i].pos.x + bombSize; ++k)
 				{
-					if(std::abs(ObjectManager::GetInst()->m_ground.arrMap[j][k] - vecBomb[i].pos.x) + std::abs(ObjectManager::GetInst()->m_ground.arrMap[j][k] - vecBomb[i].pos.x)
+					int xPos = std::abs(k - vecBomb[i].pos.x);
+					int yPos = std::abs(j - vecBomb[i].pos.y);
+
+					if (xPos + yPos <= bombSize)
+						ObjectManager::GetInst()->m_ground.arrMap[j][k] = (char)OBJ_TYPE::Bomb;
 				}
-			}*/
+			}
 
 			vecBomb.erase(vecBomb.begin() + i);
 		}

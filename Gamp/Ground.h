@@ -6,6 +6,8 @@
 class Ground : public Object
 {
 public:
+	void Update();
+private:
 	virtual void ObjectUpdate();
 	void GroundCheck();
 public:
