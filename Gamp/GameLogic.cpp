@@ -7,7 +7,7 @@ void GameLogic::Init()
 	//map init
 	for (int i = 0; i < MAP_HEIGHT; ++i) {
 		for (int j = 0; j < MAP_WIDTH; ++j) {
-			//0Àº ºó°ø°£, 1Àº ¶¥
+			//0ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½, 1ï¿½ï¿½ ï¿½ï¿½
 			if (i % 2 == 1)
 				ObjectManager::GetInst()->m_ground.arrMap[i][j] = (char)OBJ_TYPE::Ground;
 			else
@@ -30,21 +30,23 @@ void GameLogic::Render()
 			else if (ObjectManager::GetInst()->m_ground.arrMap[i][j] == (char)OBJ_TYPE::Air)
 				cout << "  ";
 			else if (ObjectManager::GetInst()->m_ground.arrMap[i][j] == (char)OBJ_TYPE::Ground)
-				cout << "£þ";
+				cout << "ï¿½ï¿½";
 			else if (ObjectManager::GetInst()->m_ground.arrMap[i][j] == (char)OBJ_TYPE::Bomb)
-				cout << "¡Ý";
+				cout << "ï¿½ï¿½";
 			else if (ObjectManager::GetInst()->m_ground.arrMap[i][j] == (char)OBJ_TYPE::Flash_Bomb)
-				cout << "¢Á";
+				cout << "ï¿½ï¿½";
+			else if (ObjectManager::GetInst()->m_ground.arrMap[i][j] == (char)OBJ_TYPE::Enemy)
+				cout << "ï¿½ï¿½";
 		}
 		cout << endl;
 	}
 
-	ObjectManager::GetInst()->enmeySpawn.EnemysRender(ObjectManager::GetInst()->m_player);
+	ObjectManager::GetInst()->m_enemy.EnemyRnderer();
 }
 
 void GameLogic::EnemySpawn()
 {
-	if (GetAsyncKeyState(VK_LCONTROL) & 0x8000)
+	if(GetAsyncKeyState(VK_LCONTROL) & 0x8000)
 		ObjectManager::GetInst()->enmeySpawn.SpawnEnemy();
 }
 

@@ -1,11 +1,12 @@
 #pragma once
-#include "Pos.h"
+#include <vector>
 #include "Player.h"
+#include "Pos.h"
+
 class Enemy
 {
 public:
-	void EnemyRnderer(Player player);
-	POS pos;
-private:
+	void EnemyRnderer();
+	void EnmeyMove();
+	std::vector<POS> vecEnemy;
 };
-

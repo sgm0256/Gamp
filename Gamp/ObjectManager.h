@@ -3,10 +3,12 @@
 #include "Player.h"
 #include "EnemySpawn.h"
 #include "Bomb.h"
+#include "Enemy.h"
 
 class ObjectManager
 {
 public:
+	Enemy m_enemy;
 	Bomb m_bomb;
 	Ground m_ground;
 	Player m_player;
