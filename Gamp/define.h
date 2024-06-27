@@ -10,5 +10,6 @@ enum class OBJ_TYPE {
 	Air = '0',
 	Ground,
 	Bomb,
-	Flash_Bomb
+	Flash_Bomb,
+	Enemy
 };

@@ -35,6 +35,8 @@ void GameLogic::Render()
 				cout << "¡Ý";
 			else if (ObjectManager::GetInst()->m_ground.arrMap[i][j] == (char)OBJ_TYPE::Flash_Bomb)
 				cout << "¢Á";
+			else if (ObjectManager::GetInst()->m_ground.arrMap[i][j] == (char)OBJ_TYPE::Enemy)
+				cout << "£À";
 		}
 		cout << endl;
 	}

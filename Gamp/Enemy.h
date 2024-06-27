@@ -7,5 +7,6 @@ class Enemy
 {
 public:
 	void EnemyRnderer();
+	void EnmeyMove();
 	std::vector<POS> vecEnemy;
 };
