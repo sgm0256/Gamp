@@ -12,7 +12,6 @@ private:
 	void GroundCheck();
 public:
 	char arrMap[MAP_HEIGHT][MAP_WIDTH];
-	float OnGroundStartTime;
-private:
+	float onGroundStartTime;
 	std::vector<OBJECT> vecGround;
 };

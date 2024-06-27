@@ -10,5 +10,5 @@ public:
 	std::vector<OBJECT> vecBomb;
 private:
 	float startBombTime;
-	int bombSize = 2;
+	int bombSize = 5;
 };

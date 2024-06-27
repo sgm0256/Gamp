@@ -12,17 +12,28 @@ void Bomb::ObjectUpdate()
 		ObjectManager::GetInst()->m_ground.arrMap[vecBomb[i].pos.y][vecBomb[i].pos.x / 2] =
 			(vecBomb[i].life % boomInterval >= boomInterval / 2) ?
 			(char)OBJ_TYPE::Bomb : (char)OBJ_TYPE::Flash_Bomb;
+
 		if (vecBomb[i].life == 0)
 		{
-			for (int j = vecBomb[i].pos.y - bombSize; j <= vecBomb[i].pos.y + bombSize; ++j)
+			POS bombPos = { vecBomb[i].pos.x, vecBomb[i].pos.y + 1 };
+
+			for (int j = bombPos.y - bombSize; j <= bombPos.y + bombSize; ++j)
 			{
-				for (int k = vecBomb[i].pos.x - bombSize; k <= vecBomb[i].pos.x + bombSize; ++k)
+				for (int k = bombPos.x / 2 - bombSize; k <= bombPos.x / 2 + bombSize; ++k)
 				{
-					int xPos = std::abs(k - vecBomb[i].pos.x);
-					int yPos = std::abs(j - vecBomb[i].pos.y);
+					if (j < 0 || j > MAP_HEIGHT-1 || k < 0 || k > MAP_WIDTH-1)
+						continue;
+
+					int xPos = std::abs(k - bombPos.x / 2);
+					int yPos = std::abs(j - bombPos.y);
 
 					if (xPos + yPos <= bombSize)
-						ObjectManager::GetInst()->m_ground.arrMap[j][k] = (char)OBJ_TYPE::Bomb;
+					{
+						if (ObjectManager::GetInst()->m_ground.arrMap[j][k] == (char)OBJ_TYPE::Ground)
+							ObjectManager::GetInst()->m_ground.vecGround.push_back({ 50, {k, j} });
+
+						ObjectManager::GetInst()->m_ground.arrMap[j][k] = (char)OBJ_TYPE::Air;
+					}
 				}
 			}
 
