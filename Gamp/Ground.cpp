@@ -9,6 +9,10 @@ void Ground::Update()
 
 void  Ground::ObjectUpdate()
 {
+	//Gotoxy(0, MAP_HEIGHT + debug);
+	//cout << vecGround.size();
+	//debug++;
+
 	for (int i = 0; i < vecGround.size(); ++i)
 	{
 		vecGround[i].life--;
@@ -21,7 +25,7 @@ void  Ground::ObjectUpdate()
 
 void Ground::GroundCheck()
 {
-	POS playerStepPos = { ObjectManager::GetInst()->m_player.pos.x / 2, ObjectManager::GetInst()->m_player.pos.y + 1};
+	POS playerStepPos = { ObjectManager::GetInst()->m_player.pos.x / 2, ObjectManager::GetInst()->m_player.pos.y + 1 };
 
 	float OnGroundEndTime = clock();
 
@@ -33,6 +37,7 @@ void Ground::GroundCheck()
 	{
 		if (playerStepPos.y < MAP_HEIGHT && playerStepPos.x < MAP_WIDTH)
 		{
+			//system("pause");
 			arrMap[playerStepPos.y][playerStepPos.x] = (char)OBJ_TYPE::Air;
 			vecGround.push_back({
 				50,

@@ -14,4 +14,5 @@ public:
 	char arrMap[MAP_HEIGHT][MAP_WIDTH];
 	float onGroundStartTime;
 	std::vector<OBJECT> vecGround;
+	int debug = 1;
 };
