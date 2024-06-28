@@ -3,10 +3,19 @@
 #include "Player.h"
 #include "Pos.h"
 
+typedef struct enemyObj
+{
+	POS pos;
+
+	enemyObj() : pos({ 0,0 }) {}
+}ENEMYOBJ;
+
 class Enemy
 {
 public:
-	void EnemyRnderer();
+	void Update();
+private:
+	void SpawnEnemy();
 	void EnmeyMove();
-	std::vector<POS> vecEnemy;
+	std::vector<ENEMYOBJ> vecEnemy;
 };

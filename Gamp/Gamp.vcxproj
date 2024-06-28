@@ -23,11 +23,9 @@
     <ClInclude Include="console.h" />
     <ClInclude Include="define.h" />
     <ClInclude Include="Enemy.h" />
-    <ClInclude Include="EnemySpawn.h" />
     <ClInclude Include="GameLogic.h" />
     <ClInclude Include="Ground.h" />
     <ClInclude Include="mci.h" />
-    <ClInclude Include="Object.h" />
     <ClInclude Include="ObjectManager.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Pos.h" />
@@ -37,7 +35,6 @@
     <ClCompile Include="Bomb.cpp" />
     <ClCompile Include="console.cpp" />
     <ClCompile Include="Enemy.cpp" />
-    <ClCompile Include="EnemySpawn.cpp" />
     <ClCompile Include="GameLogic.cpp" />
     <ClCompile Include="Ground.cpp" />
     <ClCompile Include="LSMMain.cpp">

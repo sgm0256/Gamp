@@ -1,6 +1,8 @@
 #pragma once
 #include<iostream>
+#include <vector>
 #include "console.h"
+#include "Pos.h"
 #define SAFE_DELETE(p) if (p != nullptr) {delete p; p = nullptr;}
 using std::cout;
 using std::endl;
@@ -13,3 +15,10 @@ enum class OBJ_TYPE {
 	Flash_Bomb,
 	Enemy
 };
+
+typedef struct object {
+	int life;
+	POS pos;
+
+	object() : life(0), pos({ 0, 0 }) {}
+}OBJECT;

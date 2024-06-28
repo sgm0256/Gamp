@@ -1,7 +1,6 @@
 #pragma once
 #include "Ground.h"
 #include "Player.h"
-#include "EnemySpawn.h"
 #include "Bomb.h"
 #include "Enemy.h"
 
@@ -12,7 +11,6 @@ public:
 	Bomb m_bomb;
 	Ground m_ground;
 	Player m_player;
-	EnemySpawn enmeySpawn;
 public:
 	static ObjectManager* GetInst()
 	{

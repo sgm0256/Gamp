@@ -16,7 +16,6 @@ void GameLogic::Init()
 		}
 	}
 	ObjectManager::GetInst()->m_ground.onGroundStartTime = clock();
-	ObjectManager::GetInst()->enmeySpawn.enemySpawnStartTimer = clock();
 
 	SetCursorVis(false, 1);
 }
@@ -42,28 +41,10 @@ void GameLogic::Render()
 		}
 		cout << endl;
 	}
-
-	ObjectManager::GetInst()->m_enemy.EnemyRnderer();
-}
-
-void GameLogic::EnemySpawn()
-{
-	clock_t enemySpawnEndTimer;
-	enemySpawnEndTimer = clock();
-	if ((enemySpawnEndTimer - ObjectManager::GetInst()->enmeySpawn.enemySpawnStartTimer)
-		/ CLOCKS_PER_SEC >0.5f)
-	{
-		ObjectManager::GetInst()->enmeySpawn.SpawnEnemy();
-		ObjectManager::GetInst()->enmeySpawn.enemySpawnStartTimer = clock();
-	}
-	Gotoxy(40, 25);
-	cout << (enemySpawnEndTimer - ObjectManager::GetInst()->enmeySpawn.enemySpawnStartTimer)
-		/ CLOCKS_PER_SEC;
 }
 
 void GameLogic::Update()
 {
-	clock_t gameOverEndTimer;
 	clock_t gameOverStartTimer;
 	gameOverStartTimer = clock();
 	while (true)
@@ -86,10 +67,8 @@ void GameLogic::Update()
 		Render();
 		ObjectManager::GetInst()->m_player.Input();
 		ObjectManager::GetInst()->m_ground.Update();
-		ObjectManager::GetInst()->m_bomb.ObjectUpdate();
-		EnemySpawn();
-
-
+		//ObjectManager::GetInst()->m_bomb.ObjectUpdate();
+		ObjectManager::GetInst()->m_enemy.Update();
 	}
 
 }

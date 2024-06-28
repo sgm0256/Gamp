@@ -42,7 +42,13 @@ void Player::MoveInput()
 void Player::BombInput()
 {
 	if (GetAsyncKeyState(VK_SPACE) & 0x8000)
-		ObjectManager::GetInst()->m_bomb.vecBomb.push_back({ 10, {pos.x, pos.y} });
+	{
+		OBJECT newObject;
+		newObject.life = 10;
+		newObject.pos = pos;
+
+		ObjectManager::GetInst()->m_bomb.vecBomb.push_back(newObject);
+	}
 }
 
 void Player::Move(POS _pos)

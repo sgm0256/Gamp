@@ -1,8 +1,8 @@
 #pragma once
 #include <vector>
-#include "Object.h"
+#include "define.h"
 
-class Bomb : public Object
+class Bomb
 {
 public:
 	virtual void ObjectUpdate();

@@ -1,9 +1,7 @@
 #pragma once
-#include <vector>
-#include "Object.h"
 #include "define.h"
 
-class Ground : public Object
+class Ground
 {
 public:
 	void Update();
@@ -12,7 +10,7 @@ private:
 	void GroundCheck();
 public:
 	char arrMap[MAP_HEIGHT][MAP_WIDTH];
-	float onGroundStartTime;
+	clock_t onGroundStartTime;
 	std::vector<OBJECT> vecGround;
 	int debug = 1;
 };

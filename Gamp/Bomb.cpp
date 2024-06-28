@@ -21,7 +21,7 @@ void Bomb::ObjectUpdate()
 			{
 				for (int k = bombPos.x / 2 - bombSize; k <= bombPos.x / 2 + bombSize; ++k)
 				{
-					if (j < 0 || j > MAP_HEIGHT-1 || k < 0 || k > MAP_WIDTH-1)
+					if (j < 0 || j > MAP_HEIGHT - 1 || k < 0 || k > MAP_WIDTH - 1)
 						continue;
 
 					int xPos = std::abs(k - bombPos.x / 2);
@@ -30,7 +30,13 @@ void Bomb::ObjectUpdate()
 					if (xPos + yPos <= bombSize)
 					{
 						if (ObjectManager::GetInst()->m_ground.arrMap[j][k] == (char)OBJ_TYPE::Ground)
-							ObjectManager::GetInst()->m_ground.vecGround.push_back({ 50, {k, j} });
+						{
+							OBJECT newObject;
+							newObject.life = 50;
+							newObject.pos = { k,j };
+
+							//ObjectManager::GetInst()->m_ground.vecGround.push_back(newObject);
+						}
 
 						ObjectManager::GetInst()->m_ground.arrMap[j][k] = (char)OBJ_TYPE::Air;
 					}

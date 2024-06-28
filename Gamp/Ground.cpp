@@ -7,27 +7,23 @@ void Ground::Update()
 	//GroundCheck();
 }
 
-void  Ground::ObjectUpdate()
+void Ground::ObjectUpdate()
 {
-	//Gotoxy(0, MAP_HEIGHT + debug);
-	//cout << vecGround.size();
-	//debug++;
-
-	for (int i = 0; i < vecGround.size(); ++i)
-	{
-		vecGround[i].life--;
-		if (vecGround[i].life == 0) {
-			arrMap[vecGround[i].pos.y][vecGround[i].pos.x] = (char)OBJ_TYPE::Ground;
-			vecGround.erase(vecGround.begin() + i);
-		}
-	}
+	for (int i = vecGround.size() - 1; i >= 0; --i)
+    {
+        vecGround[i].life--;
+        if (vecGround[i].life == 0) {
+            arrMap[vecGround[i].pos.y][vecGround[i].pos.x] = (char)OBJ_TYPE::Ground;
+            vecGround.erase(vecGround.begin() + i);
+        }
+    }
 }
 
 void Ground::GroundCheck()
 {
 	POS playerStepPos = { ObjectManager::GetInst()->m_player.pos.x / 2, ObjectManager::GetInst()->m_player.pos.y + 1 };
 
-	float OnGroundEndTime = clock();
+	clock_t OnGroundEndTime = clock();
 
 	//debug
 	Gotoxy(0, MAP_HEIGHT);
@@ -38,10 +34,13 @@ void Ground::GroundCheck()
 		if (playerStepPos.y < MAP_HEIGHT && playerStepPos.x < MAP_WIDTH)
 		{
 			arrMap[playerStepPos.y][playerStepPos.x] = (char)OBJ_TYPE::Air;
-			vecGround.push_back({
-				50,
-				playerStepPos
-				});
+
+			OBJECT newObject;
+			newObject.life = 50;
+			newObject.pos = playerStepPos;
+
+			//vecGround.push_back(newObject);
+
 			onGroundStartTime = clock();
 		}
 	}
