@@ -30,7 +30,7 @@ void Player::MoveInput()
 	if (inputPos.x != 0 || inputPos.y != 0)
 	{
 		if (ObjectManager::GetInst()->m_ground.arrMap[pos.y - 1][pos.x / 2] != (char)OBJ_TYPE::Air)
-			ObjectManager::GetInst()->m_ground.OnGroundStartTime = clock();
+			ObjectManager::GetInst()->m_ground.onGroundStartTime = clock();
 		else
 			inputPos.y += 2;
 	}

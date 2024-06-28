@@ -30,20 +30,19 @@ void Ground::GroundCheck()
 	float OnGroundEndTime = clock();
 
 	//debug
-	/*Gotoxy(0, MAP_HEIGHT);
-	cout << (OnGroundEndTime - OnGroundStartTime) / CLOCKS_PER_SEC;*/
+	Gotoxy(0, MAP_HEIGHT);
+	cout << (OnGroundEndTime - onGroundStartTime) / CLOCKS_PER_SEC;
 
-	if ((OnGroundEndTime - OnGroundStartTime) / CLOCKS_PER_SEC > 0.5f)
+	if ((OnGroundEndTime - onGroundStartTime) / CLOCKS_PER_SEC > 0.5f)
 	{
 		if (playerStepPos.y < MAP_HEIGHT && playerStepPos.x < MAP_WIDTH)
 		{
-			//system("pause");
 			arrMap[playerStepPos.y][playerStepPos.x] = (char)OBJ_TYPE::Air;
 			vecGround.push_back({
 				50,
 				playerStepPos
 				});
-			OnGroundStartTime = clock();
+			onGroundStartTime = clock();
 		}
 	}
 }
