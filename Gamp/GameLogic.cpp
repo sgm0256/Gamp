@@ -1,3 +1,4 @@
+#include<time.h>
 #include "GameLogic.h"
 #include "ObjectManager.h"
 
@@ -15,6 +16,7 @@ void GameLogic::Init()
 		}
 	}
 	ObjectManager::GetInst()->m_ground.OnGroundStartTime = clock();
+	ObjectManager::GetInst()->enmeySpawn.enemySpawnStartTimer = clock();
 
 	SetCursorVis(false, 1);
 }
@@ -46,8 +48,17 @@ void GameLogic::Render()
 
 void GameLogic::EnemySpawn()
 {
-	if(GetAsyncKeyState(VK_LCONTROL) & 0x8000)
+	clock_t enemySpawnEndTimer;
+	enemySpawnEndTimer = clock();
+	if ((enemySpawnEndTimer - ObjectManager::GetInst()->enmeySpawn.enemySpawnStartTimer)
+		/ CLOCKS_PER_SEC >0.5f)
+	{
 		ObjectManager::GetInst()->enmeySpawn.SpawnEnemy();
+		ObjectManager::GetInst()->enmeySpawn.enemySpawnStartTimer = clock();
+	}
+	Gotoxy(40, 25);
+	cout << (enemySpawnEndTimer - ObjectManager::GetInst()->enmeySpawn.enemySpawnStartTimer)
+		/ CLOCKS_PER_SEC;
 }
 
 void GameLogic::Update()

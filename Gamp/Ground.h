@@ -13,4 +13,5 @@ public:
 	float OnGroundStartTime;
 private:
 	std::vector<OBJECT> vecGround;
+	int debug = 1;
 };

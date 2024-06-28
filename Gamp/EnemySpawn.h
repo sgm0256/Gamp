@@ -6,5 +6,6 @@ class EnemySpawn
 {
 public:
 	void SpawnEnemy();
+	float enemySpawnStartTimer;
 };
 
