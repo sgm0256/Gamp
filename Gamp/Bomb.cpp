@@ -35,7 +35,11 @@ void Bomb::ObjectUpdate()
 							newObject.life = 50;
 							newObject.pos = { k,j };
 
-							//ObjectManager::GetInst()->m_ground.vecGround.push_back(newObject);
+							ObjectManager::GetInst()->m_ground.vecGround.push_back(newObject);
+						}
+						else if (ObjectManager::GetInst()->m_ground.arrMap[j][k] == (char)OBJ_TYPE::Enemy)
+						{
+
 						}
 
 						ObjectManager::GetInst()->m_ground.arrMap[j][k] = (char)OBJ_TYPE::Air;

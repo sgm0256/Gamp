@@ -16,8 +16,10 @@ void GameLogic::Init()
 		}
 	}
 	ObjectManager::GetInst()->m_ground.onGroundStartTime = clock();
+	ObjectManager::GetInst()->m_enemy.enemySpawnStartTimer = clock();
 
 	SetCursorVis(false, 1);
+	srand((unsigned int)time(NULL));
 }
 
 void GameLogic::Render()
@@ -67,7 +69,7 @@ void GameLogic::Update()
 		Render();
 		ObjectManager::GetInst()->m_player.Input();
 		ObjectManager::GetInst()->m_ground.Update();
-		//ObjectManager::GetInst()->m_bomb.ObjectUpdate();
+		ObjectManager::GetInst()->m_bomb.ObjectUpdate();
 		ObjectManager::GetInst()->m_enemy.Update();
 	}
 

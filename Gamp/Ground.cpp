@@ -21,27 +21,26 @@ void Ground::ObjectUpdate()
 
 void Ground::GroundCheck()
 {
-	POS playerStepPos = { ObjectManager::GetInst()->m_player.pos.x / 2, ObjectManager::GetInst()->m_player.pos.y + 1 };
-
 	clock_t OnGroundEndTime = clock();
 
-	//debug
-	Gotoxy(0, MAP_HEIGHT);
-	cout << (OnGroundEndTime - onGroundStartTime) / CLOCKS_PER_SEC;
-
 	if ((OnGroundEndTime - onGroundStartTime) / CLOCKS_PER_SEC > 0.5f)
+		GroundBreak();
+}
+
+void Ground::GroundBreak()
+{
+	POS playerStepPos = { ObjectManager::GetInst()->m_player.pos.x / 2, ObjectManager::GetInst()->m_player.pos.y + 1 };
+
+	if (playerStepPos.y < MAP_HEIGHT && playerStepPos.x < MAP_WIDTH)
 	{
-		if (playerStepPos.y < MAP_HEIGHT && playerStepPos.x < MAP_WIDTH)
-		{
-			arrMap[playerStepPos.y][playerStepPos.x] = (char)OBJ_TYPE::Air;
+		arrMap[playerStepPos.y][playerStepPos.x] = (char)OBJ_TYPE::Air;
 
-			OBJECT newObject;
-			newObject.life = 50;
-			newObject.pos = playerStepPos;
+		OBJECT newObject;
+		newObject.life = 50;
+		newObject.pos = playerStepPos;
 
-			//vecGround.push_back(newObject);
+		vecGround.push_back(newObject);
 
-			onGroundStartTime = clock();
-		}
+		onGroundStartTime = clock();
 	}
 }

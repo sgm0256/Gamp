@@ -8,6 +8,7 @@ public:
 private:
 	virtual void ObjectUpdate();
 	void GroundCheck();
+	void GroundBreak();
 public:
 	char arrMap[MAP_HEIGHT][MAP_WIDTH];
 	clock_t onGroundStartTime;
