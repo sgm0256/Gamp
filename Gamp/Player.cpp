@@ -41,8 +41,17 @@ void Player::MoveInput()
 
 void Player::BombInput()
 {
-	if (GetAsyncKeyState(VK_SPACE) & 0x8000)
-		ObjectManager::GetInst()->m_bomb.SpawnBomb(pos);
+	float bombInputTime = clock();
+
+	if ((bombInputTime - lastBombTime) / CLOCKS_PER_SEC > 1)
+	{
+		if (GetAsyncKeyState(VK_SPACE) & 0x8000) 
+		{
+			ObjectManager::GetInst()->m_bomb.SpawnBomb(pos);
+			lastBombTime = clock();
+		}
+	}
+
 }
 
 void Player::Move(POS _pos)

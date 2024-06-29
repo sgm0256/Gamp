@@ -17,6 +17,7 @@ void GameLogic::Init()
 	}
 	ObjectManager::GetInst()->m_ground.onGroundStartTime = clock();
 	ObjectManager::GetInst()->m_enemy.enemySpawnStartTimer = clock();
+	ObjectManager::GetInst()->m_player.lastBombTime = clock();
 
 	SetCursorVis(false, 1);
 	srand((unsigned int)time(NULL));
