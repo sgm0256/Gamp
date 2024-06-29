@@ -31,15 +31,11 @@ void Bomb::ObjectUpdate()
 					{
 						if (ObjectManager::GetInst()->m_ground.arrMap[j][k] == (char)OBJ_TYPE::Ground)
 						{
-							OBJECT newObject;
-							newObject.life = 50;
-							newObject.pos = { k,j };
-
-							ObjectManager::GetInst()->m_ground.vecGround.push_back(newObject);
+							ObjectManager::GetInst()->m_ground.AddGround({k,j});
 						}
 						else if (ObjectManager::GetInst()->m_ground.arrMap[j][k] == (char)OBJ_TYPE::Enemy)
 						{
-
+							ObjectManager::GetInst()->m_enemy.RemoveEnemy({k,j});
 						}
 
 						ObjectManager::GetInst()->m_ground.arrMap[j][k] = (char)OBJ_TYPE::Air;
@@ -50,4 +46,13 @@ void Bomb::ObjectUpdate()
 			vecBomb.erase(vecBomb.begin() + i);
 		}
 	}
+}
+
+void Bomb::SpawnBomb(POS pos)
+{
+	OBJECT newObject;
+	newObject.life = bombLife;
+	newObject.pos = pos;
+
+	vecBomb.push_back(newObject);
 }

@@ -6,9 +6,11 @@ class Bomb
 {
 public:
 	virtual void ObjectUpdate();
+	void SpawnBomb(POS pos);
 
-	std::vector<OBJECT> vecBomb;
 private:
+	std::vector<OBJECT> vecBomb;
 	float startBombTime;
-	int bombSize = 5;
+	int bombSize = 4;
+	int bombLife = 10;
 };

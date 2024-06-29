@@ -5,6 +5,7 @@ class Ground
 {
 public:
 	void Update();
+	void AddGround(POS pos);
 private:
 	virtual void ObjectUpdate();
 	void GroundCheck();

@@ -6,11 +6,12 @@ class Player
 {
 public:
 	void Render();
-	void Input();
+	void Update();
 private:
 	void Move(POS _pos);
 	void MoveInput();
 	void BombInput();
 public:
 	POS pos = { 0,0 };
+	float lastBombTime;
 };

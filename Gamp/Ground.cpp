@@ -9,7 +9,7 @@ void Ground::Update()
 
 void Ground::ObjectUpdate()
 {
-	for (int i = vecGround.size() - 1; i >= 0; --i)
+	for (int i = 0; i  < vecGround.size(); ++i)
     {
         vecGround[i].life--;
         if (vecGround[i].life == 0) {
@@ -35,12 +35,18 @@ void Ground::GroundBreak()
 	{
 		arrMap[playerStepPos.y][playerStepPos.x] = (char)OBJ_TYPE::Air;
 
-		OBJECT newObject;
-		newObject.life = 50;
-		newObject.pos = playerStepPos;
-
-		vecGround.push_back(newObject);
+		AddGround(playerStepPos);
 
 		onGroundStartTime = clock();
 	}
+}
+
+
+void Ground::AddGround(POS pos)
+{
+	OBJECT newObject;
+	newObject.life = 50;
+	newObject.pos = pos;
+
+	vecGround.push_back(newObject);
 }
