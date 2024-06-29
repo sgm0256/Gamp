@@ -22,6 +22,7 @@
     <ClInclude Include="Bomb.h" />
     <ClInclude Include="console.h" />
     <ClInclude Include="define.h" />
+    <ClInclude Include="EndingScene.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="GameLogic.h" />
     <ClInclude Include="Ground.h" />
@@ -34,6 +35,7 @@
   <ItemGroup>
     <ClCompile Include="Bomb.cpp" />
     <ClCompile Include="console.cpp" />
+    <ClCompile Include="EndingScene.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="GameLogic.cpp" />
     <ClCompile Include="Ground.cpp" />

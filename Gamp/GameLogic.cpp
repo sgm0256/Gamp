@@ -5,6 +5,7 @@
 
 void GameLogic::Init()
 {
+
 	//map init
 	for (int i = 0; i < MAP_HEIGHT; ++i) {
 		for (int j = 0; j < MAP_WIDTH; ++j) {
@@ -17,6 +18,7 @@ void GameLogic::Init()
 	}
 	ObjectManager::GetInst()->m_ground.onGroundStartTime = clock();
 	ObjectManager::GetInst()->m_enemy.enemySpawnStartTimer = clock();
+	ObjectManager::GetInst()->m_player.lastBombTime = clock();
 
 	SetCursorVis(false, 1);
 	srand((unsigned int)time(NULL));
@@ -50,30 +52,39 @@ void GameLogic::Update()
 	clock_t gameOverStartTimer;
 	clock_t gameOverEndTimer;
 	gameOverStartTimer = clock();
-	//int timeCnt = 20;
+	int gamePlayTime = 20;
 
 	while (true)
 	{
+
+		if (ObjectManager::GetInst()->m_endingScene.isGameEnd)
+		{
+			ObjectManager::GetInst()->m_endingScene.EndingAnimation(false);
+			break;
+		}
 		gameOverEndTimer = clock();
-		GotoPos(15, MAP_HEIGHT);
+		GotoPos(MAP_WIDTH*2 + 5, 0);
 		int currentTimer;
-		currentTimer = 250 - (gameOverEndTimer - gameOverStartTimer) / CLOCKS_PER_SEC;
+		currentTimer = gamePlayTime - (gameOverEndTimer - gameOverStartTimer) / CLOCKS_PER_SEC;
 		if(currentTimer % 60 < 10)
-			cout << currentTimer/60 << " : " << "0" << currentTimer % 60;
+			cout << "남은 시간: " << currentTimer / 60 << " : " << "0" << currentTimer % 60;
 		else
-			cout << currentTimer / 60 << " : " << currentTimer % 60;
-		if ((gameOverEndTimer - gameOverStartTimer) / CLOCKS_PER_SEC < 300)
+			cout << "남은 시간: " << currentTimer / 60 << " : " << currentTimer % 60;
+		if ((gameOverEndTimer - gameOverStartTimer) / CLOCKS_PER_SEC < gamePlayTime)
 		{
 			Render();
-			ObjectManager::GetInst()->m_player.Input();
+			ObjectManager::GetInst()->m_player.Update();
 			ObjectManager::GetInst()->m_ground.Update();
 			ObjectManager::GetInst()->m_bomb.ObjectUpdate();
 			ObjectManager::GetInst()->m_enemy.Update();
 		}
-		else {
-			//system("cls");
+		else
+		{
+			ObjectManager::GetInst()->m_endingScene.EndingAnimation(true);
 			break;
 		}
+			
+
 	}
 
 }

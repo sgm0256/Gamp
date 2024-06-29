@@ -3,6 +3,7 @@
 #include "Player.h"
 #include "Bomb.h"
 #include "Enemy.h"
+#include "EndingScene.h"
 
 class ObjectManager
 {
@@ -11,6 +12,7 @@ public:
 	Bomb m_bomb;
 	Ground m_ground;
 	Player m_player;
+	EndingScene m_endingScene;
 public:
 	static ObjectManager* GetInst()
 	{
