@@ -66,9 +66,6 @@ void Enemy::EnmeyMove()
 			if(ObjectManager::GetInst()->m_ground.arrMap[movePos.y + 1][movePos.x] == (char)OBJ_TYPE::Ground)
 				vecEnemy[i].pos = movePos;
 
-		vecEnemy[i].pos.x = std::clamp(vecEnemy[i].pos.x, 0, (MAP_WIDTH - 1) * 2);
-		vecEnemy[i].pos.y = std::clamp(vecEnemy[i].pos.y, 0, MAP_HEIGHT - 2);
-
 		ObjectManager::GetInst()->m_ground.arrMap[vecEnemy[i].pos.y][vecEnemy[i].pos.x] = (char)OBJ_TYPE::Enemy;
 	}
 }
