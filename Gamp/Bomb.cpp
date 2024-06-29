@@ -13,38 +13,33 @@ void Bomb::ObjectUpdate()
 			(vecBomb[i].life % boomInterval >= boomInterval / 2) ?
 			(char)OBJ_TYPE::Bomb : (char)OBJ_TYPE::Flash_Bomb;
 
-		if (vecBomb[i].life == 0)
+		if (vecBomb[i].life >= 0) continue;
+
+		POS bombPos = { vecBomb[i].pos.x, vecBomb[i].pos.y + 1 };
+
+		for (int j = bombPos.y - bombSize; j <= bombPos.y + bombSize; ++j)
 		{
-			POS bombPos = { vecBomb[i].pos.x, vecBomb[i].pos.y + 1 };
-
-			for (int j = bombPos.y - bombSize; j <= bombPos.y + bombSize; ++j)
+			for (int k = bombPos.x / 2 - bombSize; k <= bombPos.x / 2 + bombSize; ++k)
 			{
-				for (int k = bombPos.x / 2 - bombSize; k <= bombPos.x / 2 + bombSize; ++k)
+				if (j < 0 || j > MAP_HEIGHT - 1 || k < 0 || k > MAP_WIDTH - 1)
+					continue;
+
+				int xPos = std::abs(k - bombPos.x / 2);
+				int yPos = std::abs(j - bombPos.y);
+
+				if (xPos + yPos <= bombSize)
 				{
-					if (j < 0 || j > MAP_HEIGHT - 1 || k < 0 || k > MAP_WIDTH - 1)
-						continue;
+					if (ObjectManager::GetInst()->m_ground.arrMap[j][k] == (char)OBJ_TYPE::Ground)
+						ObjectManager::GetInst()->m_ground.AddGround({ k,j });
+					else if (ObjectManager::GetInst()->m_ground.arrMap[j][k] == (char)OBJ_TYPE::Enemy)
+						ObjectManager::GetInst()->m_enemy.RemoveEnemy({ k,j });
 
-					int xPos = std::abs(k - bombPos.x / 2);
-					int yPos = std::abs(j - bombPos.y);
-
-					if (xPos + yPos <= bombSize)
-					{
-						if (ObjectManager::GetInst()->m_ground.arrMap[j][k] == (char)OBJ_TYPE::Ground)
-						{
-							ObjectManager::GetInst()->m_ground.AddGround({k,j});
-						}
-						else if (ObjectManager::GetInst()->m_ground.arrMap[j][k] == (char)OBJ_TYPE::Enemy)
-						{
-							ObjectManager::GetInst()->m_enemy.RemoveEnemy({k,j});
-						}
-
-						ObjectManager::GetInst()->m_ground.arrMap[j][k] = (char)OBJ_TYPE::Air;
-					}
+					ObjectManager::GetInst()->m_ground.arrMap[j][k] = (char)OBJ_TYPE::Air;
 				}
 			}
-
-			vecBomb.erase(vecBomb.begin() + i);
 		}
+
+		vecBomb.erase(vecBomb.begin() + i);
 	}
 }
 
