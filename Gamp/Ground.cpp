@@ -4,7 +4,7 @@
 void Ground::Update()
 {
 	ObjectUpdate();
-	//GroundCheck();
+	GroundCheck();
 }
 
 void Ground::ObjectUpdate()
