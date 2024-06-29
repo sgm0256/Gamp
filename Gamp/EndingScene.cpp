@@ -10,13 +10,14 @@ bool GameEndManager::EndTimer()
 
 	GotoPos(MAP_WIDTH * 2 + 5, 0);
 	currentTimer = gamePlayTime - (gameOverEndTimer - gameOverStartTimer) / CLOCKS_PER_SEC;
-	cout << "남은 시간: " << currentTimer / 60 << " : " << "0" << currentTimer % 60;
+	cout << "남은 시간: " << currentTimer / 60 << " : " << currentTimer % 60 << " ";
 
 	if ((gameOverEndTimer - gameOverStartTimer) / CLOCKS_PER_SEC < gamePlayTime)
 		return true;
-	else
+	else 
 	{
-		GameEnd(false);
+		GameEnd(true);
+		return false;
 	}
 }
 
@@ -24,6 +25,7 @@ void GameEndManager::GameEnd(bool result)
 {
 	EndingAnimation();
 	EndingRenderer(result);
+	isGameEnd = true;
 }
 
 void GameEndManager::EndingAnimation()
@@ -83,7 +85,4 @@ void GameEndManager::EndingRenderer(bool result)
 		wcout << L"	╚═════╝ ╚═╝  ╚═╝╚═╝     ╚═╝╚══════╝      ╚═════╝   ╚═══╝  ╚══════╝╚═╝  ╚═╝  " << endl;
 		int curmode = _setmode(_fileno(stdout), prevmode);
 	}
-
-
-
 }

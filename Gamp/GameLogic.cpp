@@ -49,6 +49,9 @@ void GameLogic::Update()
 {
 	while (true)
 	{
+		if (ObjectManager::GetInst()->m_GameEndManager.isGameEnd)
+			break;
+
 		if (ObjectManager::GetInst()->m_GameEndManager.EndTimer())
 		{
 			Render();
@@ -57,7 +60,5 @@ void GameLogic::Update()
 			ObjectManager::GetInst()->m_bomb.ObjectUpdate();
 			ObjectManager::GetInst()->m_enemy.Update();
 		}
-		else
-			break;
 	}
 }

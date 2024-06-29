@@ -24,5 +24,5 @@ public:
 private:
 	std::vector<ENEMYOBJ> vecEnemy;
 	int moveDelayTime = 5;
-	float enemySpawnSpeed = 1;
+	float enemySpawnSpeed = 2;
 };

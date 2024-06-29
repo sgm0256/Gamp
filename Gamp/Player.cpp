@@ -61,6 +61,11 @@ void Player::Move(POS _pos)
 	pos.x = std::clamp(pos.x, 0, (MAP_WIDTH - 1) * 2);
 	pos.y = std::clamp(pos.y, 0, MAP_HEIGHT - 2);
 
+
+	if (ObjectManager::GetInst()->m_ground.arrMap[pos.y][pos.x / 2] == (char)OBJ_TYPE::Enemy
+		|| (ObjectManager::GetInst()->m_ground.arrMap[pos.y + 1][pos.x / 2] == (char)OBJ_TYPE::Air && pos.y == MAP_HEIGHT-2))
+		ObjectManager::GetInst()->m_GameEndManager.GameEnd(false);
+
 	if (ObjectManager::GetInst()->m_ground.arrMap[pos.y + 1][pos.x / 2] == (char)OBJ_TYPE::Air)
 		pos += {0, 2};
 }

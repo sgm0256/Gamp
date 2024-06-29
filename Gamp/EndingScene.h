@@ -9,8 +9,9 @@ private:
 	void EndingRenderer(bool result);
 public:
 	clock_t gameOverStartTimer;
+	bool isGameEnd = false;
 private:
-	int gamePlayTime = 10;
+	int gamePlayTime = 300;
 	int currentTimer;
 };
 
