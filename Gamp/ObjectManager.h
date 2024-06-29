@@ -12,7 +12,7 @@ public:
 	Bomb m_bomb;
 	Ground m_ground;
 	Player m_player;
-	EndingScene m_endingScene;
+	GameEndManager m_GameEndManager;
 public:
 	static ObjectManager* GetInst()
 	{

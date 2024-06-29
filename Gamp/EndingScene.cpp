@@ -1,9 +1,32 @@
-﻿#include "EndingScene.h"
-#include "console.h"
-#include <io.h>
+﻿#include <io.h>
 #include <fcntl.h>
+#include "console.h"
+#include "EndingScene.h"
+#include "define.h";
 
-void EndingScene::EndingAnimation(bool result)
+bool GameEndManager::EndTimer()
+{
+	clock_t gameOverEndTimer = clock();
+
+	GotoPos(MAP_WIDTH * 2 + 5, 0);
+	currentTimer = gamePlayTime - (gameOverEndTimer - gameOverStartTimer) / CLOCKS_PER_SEC;
+	cout << "남은 시간: " << currentTimer / 60 << " : " << "0" << currentTimer % 60;
+
+	if ((gameOverEndTimer - gameOverStartTimer) / CLOCKS_PER_SEC < gamePlayTime)
+		return true;
+	else
+	{
+		GameEnd(false);
+	}
+}
+
+void GameEndManager::GameEnd(bool result)
+{
+	EndingAnimation();
+	EndingRenderer(result);
+}
+
+void GameEndManager::EndingAnimation()
 {
 	COORD Resolution = GetConsoleResolution();
 	int width = Resolution.X;
@@ -32,10 +55,9 @@ void EndingScene::EndingAnimation(bool result)
 		Sleep(anitime);
 	}
 	system("cls");
-	EndingRenderer(result);
 }
 
-void EndingScene::EndingRenderer(bool result)
+void GameEndManager::EndingRenderer(bool result)
 {
 	if (result)
 	{

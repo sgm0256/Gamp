@@ -2,21 +2,7 @@
 #include "GameLogic.h"
 #include "ObjectManager.h"
 
-void LSM();
-void SGM();
-
 int main()
-{
-	//LSM();
-	SGM();
-}
-
-void LSM()
-{
-	TitleScene();
-}
-
-void SGM()
 {
 	if (TitleScene())
 	{

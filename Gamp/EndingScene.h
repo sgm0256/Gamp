@@ -1,11 +1,16 @@
 #pragma once
-class EndingScene
+class GameEndManager
 {
 public:
-	void EndingAnimation(bool result);
-	bool isGameEnd = false;
+	bool EndTimer();
+	void GameEnd(bool result);
 private:
+	void EndingAnimation();
 	void EndingRenderer(bool result);
-
+public:
+	clock_t gameOverStartTimer;
+private:
+	int gamePlayTime = 10;
+	int currentTimer;
 };
 

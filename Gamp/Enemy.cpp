@@ -31,9 +31,6 @@ void Enemy::SpawnEnemy()
 			spawnPos.y = rand() % 2 > 0 ? 0 : MAP_HEIGHT - 2;
 		}
 
-		Gotoxy(0, MAP_HEIGHT);
-		cout << spawnPos.x << ", " << spawnPos.y << "  ";
-
 		ENEMYOBJ newEnemyObj;
 		newEnemyObj.moveDelay = moveDelayTime;
 		newEnemyObj.pos = spawnPos;

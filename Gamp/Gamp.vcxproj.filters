@@ -36,9 +36,6 @@
     <ClCompile Include="Enemy.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="LSMMain.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="Bomb.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
