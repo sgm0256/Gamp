@@ -48,29 +48,32 @@ void GameLogic::Render()
 void GameLogic::Update()
 {
 	clock_t gameOverStartTimer;
+	clock_t gameOverEndTimer;
 	gameOverStartTimer = clock();
+	//int timeCnt = 20;
+
 	while (true)
 	{
-		/*gameOverEndTimer = clock();
-		GotoPos(5, 25);
-		cout << (gameOverEndTimer - gameOverStartTimer) / CLOCKS_PER_SEC;
-		if ((gameOverEndTimer - gameOverStartTimer) / CLOCKS_PER_SEC < 20)
+		gameOverEndTimer = clock();
+		GotoPos(15, MAP_HEIGHT);
+		int currentTimer;
+		currentTimer = 250 - (gameOverEndTimer - gameOverStartTimer) / CLOCKS_PER_SEC;
+		if(currentTimer % 60 < 10)
+			cout << currentTimer/60 << " : " << "0" << currentTimer % 60;
+		else
+			cout << currentTimer / 60 << " : " << currentTimer % 60;
+		if ((gameOverEndTimer - gameOverStartTimer) / CLOCKS_PER_SEC < 300)
 		{
 			Render();
 			ObjectManager::GetInst()->m_player.Input();
 			ObjectManager::GetInst()->m_ground.Update();
 			ObjectManager::GetInst()->m_bomb.ObjectUpdate();
-			EnemySpawn();
+			ObjectManager::GetInst()->m_enemy.Update();
 		}
 		else {
-			system("cls");
+			//system("cls");
 			break;
-		}*/
-		Render();
-		ObjectManager::GetInst()->m_player.Input();
-		ObjectManager::GetInst()->m_ground.Update();
-		ObjectManager::GetInst()->m_bomb.ObjectUpdate();
-		ObjectManager::GetInst()->m_enemy.Update();
+		}
 	}
 
 }
