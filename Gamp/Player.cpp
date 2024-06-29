@@ -8,7 +8,7 @@ void Player::Render()
 	cout << "¢Â";
 }
 
-void Player::Input()
+void Player::Update()
 {
 	MoveInput();
 	BombInput();
@@ -42,13 +42,7 @@ void Player::MoveInput()
 void Player::BombInput()
 {
 	if (GetAsyncKeyState(VK_SPACE) & 0x8000)
-	{
-		OBJECT newObject;
-		newObject.life = 10;
-		newObject.pos = pos;
-
-		ObjectManager::GetInst()->m_bomb.vecBomb.push_back(newObject);
-	}
+		ObjectManager::GetInst()->m_bomb.SpawnBomb(pos);
 }
 
 void Player::Move(POS _pos)

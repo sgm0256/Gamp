@@ -5,15 +5,17 @@
 
 typedef struct enemyObj
 {
+	int moveDelay;
 	POS pos;
 
-	enemyObj() : pos({ 0,0 }) {}
+	enemyObj() : moveDelay(0), pos({ 0,0 }) {}
 }ENEMYOBJ;
 
 class Enemy
 {
 public:
 	void Update();
+	void RemoveEnemy(POS pos);
 private:
 	void SpawnEnemy();
 	void EnmeyMove();
@@ -21,4 +23,6 @@ public:
 	clock_t enemySpawnStartTimer;
 private:
 	std::vector<ENEMYOBJ> vecEnemy;
+	int moveDelayTime = 5;
+	float enemySpawnSpeed = 1;
 };

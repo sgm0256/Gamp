@@ -11,4 +11,9 @@ typedef struct pos
 		y += other.y; 
 		return *this;
 	}
+
+	bool operator==(const pos& other) const
+	{
+		return x == other.x && y == other.y;
+	}
 }POS;

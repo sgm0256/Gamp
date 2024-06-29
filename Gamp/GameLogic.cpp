@@ -67,7 +67,7 @@ void GameLogic::Update()
 			break;
 		}*/
 		Render();
-		ObjectManager::GetInst()->m_player.Input();
+		ObjectManager::GetInst()->m_player.Update();
 		ObjectManager::GetInst()->m_ground.Update();
 		ObjectManager::GetInst()->m_bomb.ObjectUpdate();
 		ObjectManager::GetInst()->m_enemy.Update();
