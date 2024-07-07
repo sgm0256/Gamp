@@ -3,7 +3,7 @@
 #include "Player.h"
 #include "Bomb.h"
 #include "Enemy.h"
-#include "EndingScene.h"
+#include "GameEndManager.h"
 
 class ObjectManager
 {

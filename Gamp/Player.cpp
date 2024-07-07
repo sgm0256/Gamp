@@ -28,12 +28,8 @@ void Player::MoveInput()
 		inputPos.x += 2;
 
 	if (inputPos.x != 0 || inputPos.y != 0)
-	{
 		if (ObjectManager::GetInst()->m_ground.arrMap[pos.y - 1][pos.x / 2] != (char)OBJ_TYPE::Air)
 			ObjectManager::GetInst()->m_ground.onGroundStartTime = clock();
-		else
-			inputPos.y += 2;
-	}
 
 	Move(inputPos);
 	Sleep(100);
@@ -41,7 +37,9 @@ void Player::MoveInput()
 
 void Player::BombInput()
 {
-	float bombInputTime = clock();
+	clock_t bombInputTime = clock();
+
+	clock_t bombTimer = (bombInputTime - lastBombTime) / CLOCKS_PER_SEC;
 
 	if ((bombInputTime - lastBombTime) / CLOCKS_PER_SEC > 1)
 	{

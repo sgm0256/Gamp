@@ -19,8 +19,10 @@ public:
 private:
 	void SpawnEnemy();
 	void EnmeyMove();
+	void SpawnSpeedTimer();
 public:
-	clock_t enemySpawnStartTimer;
+	clock_t startEnemySpawnTimer;
+	clock_t startSpawnSpeedTimer;
 private:
 	std::vector<ENEMYOBJ> vecEnemy;
 	int moveDelayTime = 5;

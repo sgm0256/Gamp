@@ -47,7 +47,7 @@ MENU MenuRender()
 {
 	COORD Resolution = GetConsoleResolution();
 	int x = Resolution.X / 2.25f;  // 2.5
-	int y = Resolution.Y / 2.5;// 3
+	int y = Resolution.Y / 2.5f;// 3
 	int originy = y;
 	Gotoxy(x, y);
 	cout << "게임 시작";
@@ -124,7 +124,7 @@ void EnterAnimation()
 	system("cls");
 
 	SetColor((int)COLOR::BLACK, (int)COLOR::WHITE);
-	for (int i = 0; i < width / 2; ++i)
+	for (int i = 0; i <= width / 2; ++i)
 	{
 		for (int j = 0; j < height; j += 1)
 		{
@@ -134,7 +134,7 @@ void EnterAnimation()
 		Sleep(anitime);
 	}
 	SetColor((int)COLOR::WHITE, (int)COLOR::BLACK);
-	for (int i = 0; i < width / 2; ++i)
+	for (int i = 0; i <= width / 2; ++i)
 	{
 		for (int j = 0; j < height; j += 1)
 		{
@@ -151,10 +151,10 @@ void InfoRenderer()
 
 	system("cls");
 
-	cout << "남은 시간이 다 될때까지 적들로부처 살아남으세요." << endl;
-	cout << "잠깐이라도 멈추면 발판 부서지며, " << endl;
-	cout << "폭탄으로도 발판이 부서집니다. 실수로 퇴로를 막지 않게 조심하세요." << endl;
-	cout << "적에게 닿거나 맵의 바닥으로 떨어지면 게임이 끝납니다." << endl;
+	cout << "남은 시간이 다 될때까지 적들로부터 살아남으세요." << endl;
+	cout << "멈춰있으면 발판이 부서지니 계속 움직이세요." << endl;
+	cout << "폭탄의 범위는 30초 마다 1단계씩 증가하여 최대 3단계까지 증가합니다." << endl;
+	cout << "적에게 닿거나 맵의 바닥으로 떨어지면 게임이 끝납니다." << endl << endl;
 	cout << "화살표키 -> 이동" << endl;
 	cout << "스페이스바 -> 폭탄 설치" << endl;
 

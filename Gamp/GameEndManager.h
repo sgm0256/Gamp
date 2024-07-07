@@ -11,7 +11,7 @@ public:
 	clock_t gameOverStartTimer;
 	bool isGameEnd = false;
 private:
-	int gamePlayTime = 300;
+	int gamePlayTime = 120;
 	int currentTimer;
 };
 

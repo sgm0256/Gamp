@@ -3,20 +3,27 @@
 
 void Ground::Update()
 {
-	ObjectUpdate();
-	GroundCheck();
+	try
+	{
+		ObjectUpdate();
+		GroundCheck();
+	}
+	catch (const std::exception&)
+	{
+
+	}
 }
 
 void Ground::ObjectUpdate()
 {
-	for (int i = 0; i  < vecGround.size(); ++i)
-    {
-        vecGround[i].life--;
-        if (vecGround[i].life == 0) {
-            arrMap[vecGround[i].pos.y][vecGround[i].pos.x] = (char)OBJ_TYPE::Ground;
-            vecGround.erase(vecGround.begin() + i);
-        }
-    }
+	for (int i = 0; i < vecGround.size(); ++i)
+	{
+		vecGround[i].life--;
+		if (vecGround[i].life == 0) {
+			arrMap[vecGround[i].pos.y][vecGround[i].pos.x] = (char)OBJ_TYPE::Ground;
+			vecGround.erase(vecGround.begin() + i);
+		}
+	}
 }
 
 void Ground::GroundCheck()

@@ -5,12 +5,15 @@
 class Bomb
 {
 public:
-	virtual void ObjectUpdate();
+	void Update();
 	void SpawnBomb(POS pos);
-
+private:
+	void ObjectUpdate();
+	void UpgradeBombTimer();
+public:
+	clock_t startBombUpgradeTime;
 private:
 	std::vector<OBJECT> vecBomb;
-	float startBombTime;
-	int bombSize = 4;
+	int bombSize = 2;
 	int bombLife = 10;
 };

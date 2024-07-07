@@ -1,6 +1,7 @@
-#include<time.h>
+ï»¿#include<time.h>
 #include "GameLogic.h"
 #include "ObjectManager.h"
+#include "console.h"
 
 
 void GameLogic::Init()
@@ -14,8 +15,10 @@ void GameLogic::Init()
 		}
 	}
 	ObjectManager::GetInst()->m_ground.onGroundStartTime = clock();
-	ObjectManager::GetInst()->m_enemy.enemySpawnStartTimer = clock();
+	ObjectManager::GetInst()->m_enemy.startEnemySpawnTimer = clock();
+	ObjectManager::GetInst()->m_enemy.startSpawnSpeedTimer = clock();
 	ObjectManager::GetInst()->m_player.lastBombTime = clock();
+	ObjectManager::GetInst()->m_bomb.startBombUpgradeTime = clock();
 	ObjectManager::GetInst()->m_GameEndManager.gameOverStartTimer = clock();
 
 	SetCursorVis(false, 1);
@@ -28,18 +31,24 @@ void GameLogic::Render()
 
 	for (int i = 0; i < MAP_HEIGHT; ++i) {
 		for (int j = 0; j < MAP_WIDTH; ++j) {
-			if (i == ObjectManager::GetInst()->m_player.pos.y && j == ObjectManager::GetInst()->m_player.pos.x/2)
+			if (i == ObjectManager::GetInst()->m_player.pos.y && j == ObjectManager::GetInst()->m_player.pos.x / 2)
 				ObjectManager::GetInst()->m_player.Render();
 			else if (ObjectManager::GetInst()->m_ground.arrMap[i][j] == (char)OBJ_TYPE::Air)
 				cout << "  ";
 			else if (ObjectManager::GetInst()->m_ground.arrMap[i][j] == (char)OBJ_TYPE::Ground)
-				cout << "£þ";
+				cout << "ï¿£";
 			else if (ObjectManager::GetInst()->m_ground.arrMap[i][j] == (char)OBJ_TYPE::Bomb)
-				cout << "¡Ý";
+				cout << "â—Ž";
 			else if (ObjectManager::GetInst()->m_ground.arrMap[i][j] == (char)OBJ_TYPE::Flash_Bomb)
-				cout << "¢Á";
+				cout << "âŠ™";
 			else if (ObjectManager::GetInst()->m_ground.arrMap[i][j] == (char)OBJ_TYPE::Enemy)
-				cout << "£À";
+				cout << "ï¼ ";
+			else if (ObjectManager::GetInst()->m_ground.arrMap[i][j] == (char)OBJ_TYPE::Warning)
+			{
+				SetColor((char)COLOR::RED);
+				cout << "!!";
+				SetColor((char)COLOR::WHITE);
+			}
 		}
 		cout << endl;
 	}
@@ -55,10 +64,10 @@ void GameLogic::Update()
 		if (ObjectManager::GetInst()->m_GameEndManager.EndTimer())
 		{
 			Render();
-			ObjectManager::GetInst()->m_player.Update();
 			ObjectManager::GetInst()->m_ground.Update();
-			ObjectManager::GetInst()->m_bomb.ObjectUpdate();
+			ObjectManager::GetInst()->m_bomb.Update();
 			ObjectManager::GetInst()->m_enemy.Update();
+			ObjectManager::GetInst()->m_player.Update();
 		}
 	}
 }

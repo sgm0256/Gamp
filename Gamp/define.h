@@ -13,7 +13,8 @@ enum class OBJ_TYPE {
 	Ground,
 	Bomb,
 	Flash_Bomb,
-	Enemy
+	Enemy,
+	Warning
 };
 
 typedef struct object {

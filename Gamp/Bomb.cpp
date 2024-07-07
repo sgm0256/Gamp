@@ -1,6 +1,13 @@
 #include <math.h>
+#include <time.h>
 #include "ObjectManager.h"
 #include "define.h"
+
+void Bomb::Update()
+{
+	ObjectUpdate();
+	UpgradeBombTimer();
+}
 
 void Bomb::ObjectUpdate()
 {
@@ -50,4 +57,21 @@ void Bomb::SpawnBomb(POS pos)
 	newObject.pos = pos;
 
 	vecBomb.push_back(newObject);
+}
+
+void Bomb::UpgradeBombTimer()
+{
+	if (bombSize == 4)
+		return;
+
+	clock_t endBombUpgradeTimer = clock();
+
+	if ((endBombUpgradeTimer - startBombUpgradeTime) / CLOCKS_PER_SEC > 30)
+	{
+		bombSize += 1;
+		startBombUpgradeTime = clock();
+	}
+
+	GotoPos(MAP_WIDTH * 2 + 5, 4);
+	cout << "ÆøÅº ¹üÀ§: " << bombSize-1 << "´Ü°è";
 }

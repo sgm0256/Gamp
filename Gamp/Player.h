@@ -13,5 +13,5 @@ private:
 	void BombInput();
 public:
 	POS pos = { 0,0 };
-	float lastBombTime;
+	clock_t lastBombTime;
 };
